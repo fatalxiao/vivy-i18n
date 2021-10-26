@@ -9,12 +9,21 @@ import {connect} from 'react-redux';
 // Styles
 import './Root.scss';
 
-const Root = ({}) => (
+const Root = ({
+    title, content
+}) => (
     <div className="root">
-
+        <h1>{title}</h1>
+        <p>{content}</p>
     </div>
 );
 
-Root.propTypes = {};
+Root.propTypes = {
+    title: PropTypes.string,
+    content: PropTypes.string
+};
 
-export default connect(state => ({}))(Root);
+export default connect(state => ({
+    title: state.i18n.root.title,
+    content: state.i18n.root.content
+}))(Root);
