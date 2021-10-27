@@ -10,7 +10,8 @@ import createI18n from './models/i18n';
  * @type {Object}
  */
 const DEFAULT_OPTIONS = {
-    i18nModelNameSpace: 'i18n'
+    i18nModelNameSpace: 'i18n',
+    defaultLanguage: 'en-US'
 };
 
 /**
@@ -27,7 +28,7 @@ export default function createVivyI18nPlugin(options = {}) {
     return {
 
         extraModels: [
-            createI18n(i18nModelNameSpace)
+            createI18n(opts)
         ],
 
         /**

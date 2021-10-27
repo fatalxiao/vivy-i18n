@@ -4,13 +4,22 @@
 
 /**
  * Create I18n model
- * @param nameSpace {string}
+ * @param options {Object}
  * @returns {Object}
  */
-export default function createI18n(nameSpace) {
+export default function createI18n({nameSpace, defaultLanguage}) {
     return {
         nameSpace: nameSpace || 'i18n',
-        state: {},
+        state: {
+
+            defaultLanguage: defaultLanguage || 'en-US',
+
+            // language: 'en-US',
+            language: 'zh-CN',
+
+            data: {}
+
+        },
         reducers: {
 
             /**
@@ -21,10 +30,24 @@ export default function createI18n(nameSpace) {
              * @returns {Object}
              */
             register: (state, {nameSpace, i18ns}) => {
+
+                const nextData = state.data;
+                const {language, defaultLanguage} = state;
+
+                Object.defineProperty(nextData, nameSpace, {
+                    get() {
+                        console.log('i18ns::', i18ns);
+                        console.log('language::', language);
+                        console.log('defaultLanguage::', defaultLanguage);
+                        return i18ns?.[language || defaultLanguage];
+                    }
+                });
+
                 return {
                     ...state,
-                    [nameSpace]: i18ns
+                    data: nextData
                 };
+
             },
 
             /**
@@ -35,13 +58,13 @@ export default function createI18n(nameSpace) {
              */
             unregister: (state, {nameSpace}) => {
 
-                const nextState = {
-                    ...state
+                const nextData = state.data;
+                delete nextData[nameSpace];
+
+                return {
+                    ...state,
+                    data: nextData
                 };
-
-                delete nextState[nameSpace];
-
-                return nextState;
 
             }
 
