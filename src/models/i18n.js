@@ -17,6 +17,8 @@ export default function createI18n({nameSpace, defaultLanguage}) {
             // language: 'en-US',
             language: 'zh-CN',
 
+            originData: {},
+
             data: {}
 
         },
@@ -29,10 +31,20 @@ export default function createI18n({nameSpace, defaultLanguage}) {
              * @returns {*&{language: (string|*)}}
              */
             switchLanguage: (state, {language}) => {
+
+                const {defaultLanguage, originData} = state;
+                const data = {};
+
+                Object.entries(originData).forEach(([nameSpace, i18ns]) => {
+                    data[nameSpace] = i18ns?.[language || defaultLanguage];
+                });
+
                 return {
                     ...state,
-                    language: language || state.defaultLanguage
+                    language: language || defaultLanguage,
+                    data
                 };
+
             },
 
             /**
@@ -44,18 +56,17 @@ export default function createI18n({nameSpace, defaultLanguage}) {
              */
             register: (state, {nameSpace, i18ns}) => {
 
-                const nextData = state.data;
-                const {language, defaultLanguage} = state;
+                const {defaultLanguage, language} = state;
+                const originData = {...state.originData};
+                const data = {...state.data};
 
-                Object.defineProperty(nextData, nameSpace, {
-                    get() {
-                        return i18ns?.[language || defaultLanguage];
-                    }
-                });
+                originData[nameSpace] = i18ns;
+                data[nameSpace] = i18ns?.[language || defaultLanguage];
 
                 return {
                     ...state,
-                    data: nextData
+                    originData,
+                    data
                 };
 
             },
@@ -68,12 +79,16 @@ export default function createI18n({nameSpace, defaultLanguage}) {
              */
             unregister: (state, {nameSpace}) => {
 
-                const nextData = state.data;
-                delete nextData[nameSpace];
+                const originData = {...state.originData};
+                const data = {...state.data};
+
+                delete originData[nameSpace];
+                delete data[nameSpace];
 
                 return {
                     ...state,
-                    data: nextData
+                    originData,
+                    data
                 };
 
             }
