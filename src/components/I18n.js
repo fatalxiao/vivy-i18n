@@ -8,6 +8,7 @@ import {connect} from 'react-redux';
 
 const Root = ({
     children, i18nCurrentData,
+    dispatch,
     ...restProps
 }) => (
     <span {...restProps}>
@@ -16,8 +17,12 @@ const Root = ({
 );
 
 Root.propTypes = {
+
     children: PropTypes.func,
-    i18nCurrentData: PropTypes.object
+    i18nCurrentData: PropTypes.object,
+
+    dispatch: PropTypes.func
+
 };
 
 export default connect(state => ({
