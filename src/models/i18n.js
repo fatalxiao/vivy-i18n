@@ -4,23 +4,19 @@
 
 /**
  * Create I18n model
- * @param options {Object}
+ * @param nameSpace {string}
+ * @param defaultLanguage {string}
  * @returns {Object}
  */
-export default function createI18n({nameSpace, defaultLanguage}) {
+export default function createI18n(nameSpace, defaultLanguage = 'en-US') {
     return {
         nameSpace: nameSpace || 'i18n',
         state: {
 
             /**
-             * Default language
-             */
-            defaultLanguage: defaultLanguage || 'en-US',
-
-            /**
              * Current language
              */
-            language: 'en-US',
+            language: defaultLanguage,
 
             /**
              * Origin I18ns data in models
@@ -43,16 +39,16 @@ export default function createI18n({nameSpace, defaultLanguage}) {
              */
             switchLanguage: (state, {language}) => {
 
-                const {defaultLanguage, origin} = state;
+                const {origin} = state;
                 const current = {};
 
                 Object.entries(origin).forEach(([nameSpace, i18ns]) => {
-                    current[nameSpace] = i18ns?.[language || defaultLanguage];
+                    current[nameSpace] = i18ns?.[language];
                 });
 
                 return {
                     ...state,
-                    language: language || defaultLanguage,
+                    language: language,
                     current
                 };
 
@@ -67,12 +63,12 @@ export default function createI18n({nameSpace, defaultLanguage}) {
              */
             register: (state, {nameSpace, i18ns}) => {
 
-                const {defaultLanguage, language} = state;
+                const {language} = state;
                 const origin = {...state.origin};
                 const current = {...state.current};
 
                 origin[nameSpace] = i18ns;
-                current[nameSpace] = i18ns?.[language || defaultLanguage];
+                current[nameSpace] = i18ns?.[language];
 
                 return {
                     ...state,

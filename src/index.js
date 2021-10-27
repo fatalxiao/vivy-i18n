@@ -26,12 +26,12 @@ export default function createVivyI18nPlugin(options = {}) {
 
     const opts = {...DEFAULT_OPTIONS, ...options};
 
-    const {i18nModelNameSpace} = opts;
+    const {i18nModelNameSpace, defaultLanguage} = opts;
 
     return {
 
         extraModels: [
-            createI18n(opts)
+            createI18n(i18nModelNameSpace, defaultLanguage)
         ],
 
         /**
