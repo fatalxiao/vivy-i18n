@@ -1,3 +1,10 @@
+import * as I18n from './src/components/I18n';
+
+/**
+ * I18n
+ */
+export {I18n};
+
 /**
  * Vivy I18n plugin option
  */
