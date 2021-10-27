@@ -6,20 +6,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-// Styles
-import './Root.scss';
+// Components
+import Form from '../../Form/containers/Form';
 
 const Root = ({
     title
 }) => (
-    <div className="root">
+    <>
         <h1>{title}</h1>
-    </div>
+        <Form/>
+    </>
 );
 
 Root.propTypes = {
-    title: PropTypes.string,
-    content: PropTypes.string
+    title: PropTypes.string
 };
 
 export default connect(state => ({

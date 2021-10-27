@@ -9,6 +9,7 @@ import {Provider} from 'react-redux';
 // Sync component and model
 import Root from './modules/Root/containers/Root';
 import root from './modules/Root/models/root';
+import form from './modules/Form/models/form';
 
 // Import Vivy
 import Vivy from 'vivy';
@@ -25,7 +26,8 @@ const store = vivy.createStore();
 
 // Register vivy models
 store.registerModels([
-    root
+    root,
+    form
 ]);
 
 render(
