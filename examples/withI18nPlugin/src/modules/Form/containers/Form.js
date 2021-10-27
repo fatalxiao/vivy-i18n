@@ -10,7 +10,7 @@ import {connect} from 'react-redux';
 import {I18n} from 'vivy-i18n';
 
 const Form = ({
-    firstName, lastName
+    firstName
 }) => (
     <form>
         <label>
@@ -27,11 +27,9 @@ const Form = ({
 );
 
 Form.propTypes = {
-    firstName: PropTypes.string,
-    lastName: PropTypes.string
+    firstName: PropTypes.string
 };
 
 export default connect(state => ({
-    firstName: state.i18n.current.form.firstName,
-    lastName: state.i18n.current.form.lastName
+    firstName: state.i18n.current.form.firstName
 }))(Form);
