@@ -10,11 +10,10 @@ import {connect} from 'react-redux';
 import './Root.scss';
 
 const Root = ({
-    title, content
+    title
 }) => (
     <div className="root">
         <h1>{title}</h1>
-        <p>{content}</p>
     </div>
 );
 
@@ -24,6 +23,5 @@ Root.propTypes = {
 };
 
 export default connect(state => ({
-    title: state.i18n.data.root.title,
-    content: state.i18n.data.root.content
+    title: state.i18n.data.root.title
 }))(Root);

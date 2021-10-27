@@ -6,12 +6,10 @@ export default {
     nameSpace: 'root',
     i18ns: {
         'en-US': {
-            title: 'Here is Title',
-            content: 'Here is content'
+            title: 'Here is Title'
         },
         'zh-CN': {
-            title: '这是标题',
-            content: '这是内容'
+            title: '这是标题'
         }
     }
 };
