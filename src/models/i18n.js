@@ -12,12 +12,24 @@ export default function createI18n({nameSpace, defaultLanguage}) {
         nameSpace: nameSpace || 'i18n',
         state: {
 
+            /**
+             * Default language
+             */
             defaultLanguage: defaultLanguage || 'en-US',
 
+            /**
+             * Current language
+             */
             language: 'en-US',
 
+            /**
+             * Origin I18ns data in models
+             */
             origin: {},
 
+            /**
+             * Current language I18ns data
+             */
             current: {}
 
         },
