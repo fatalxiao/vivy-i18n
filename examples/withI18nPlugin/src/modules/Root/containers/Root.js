@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 // Components
+import SwitchLanguage from './SwitchLanguage';
 import Form from '../../Form/containers/Form';
 
 const Root = ({
@@ -14,6 +15,7 @@ const Root = ({
 }) => (
     <>
         <h1>{title}</h1>
+        <SwitchLanguage/>
         <Form/>
     </>
 );
