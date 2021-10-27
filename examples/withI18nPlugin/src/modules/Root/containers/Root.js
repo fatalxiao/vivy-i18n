@@ -24,6 +24,6 @@ Root.propTypes = {
 };
 
 export default connect(state => ({
-    title: state.i18n.root.title,
-    content: state.i18n.root.content
+    title: state.i18n.data.root.title,
+    content: state.i18n.data.root.content
 }))(Root);
