@@ -27,6 +27,6 @@ Form.propTypes = {
 };
 
 export default connect(state => ({
-    firstName: state.i18n.data.form.firstName,
-    lastName: state.i18n.data.form.lastName
+    firstName: state.i18n.current.form.firstName,
+    lastName: state.i18n.current.form.lastName
 }))(Form);
