@@ -23,6 +23,19 @@ export default function createI18n({nameSpace, defaultLanguage}) {
         reducers: {
 
             /**
+             * Switch current language
+             * @param state
+             * @param language
+             * @returns {*&{language: (string|*)}}
+             */
+            switchLanguage: (state, {language}) => {
+                return {
+                    ...state,
+                    language: language || state.defaultLanguage
+                };
+            },
+
+            /**
              * Register I18ns
              * @param state {Object}
              * @param nameSpace {string}
@@ -36,9 +49,6 @@ export default function createI18n({nameSpace, defaultLanguage}) {
 
                 Object.defineProperty(nextData, nameSpace, {
                     get() {
-                        console.log('i18ns::', i18ns);
-                        console.log('language::', language);
-                        console.log('defaultLanguage::', defaultLanguage);
                         return i18ns?.[language || defaultLanguage];
                     }
                 });
