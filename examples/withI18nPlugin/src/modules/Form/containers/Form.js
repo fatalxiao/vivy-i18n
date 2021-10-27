@@ -6,6 +6,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
+// Components
+import {I18n} from 'vivy-i18n';
+
 const Form = ({
     firstName, lastName
 }) => (
@@ -15,7 +18,9 @@ const Form = ({
             <input/>
         </label>
         <label>
-            {lastName}
+            <I18n>
+                {current => current.form.lastName}
+            </I18n>
             <input/>
         </label>
     </form>
