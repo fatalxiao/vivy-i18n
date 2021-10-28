@@ -2,29 +2,63 @@
  * @file I18n.js
  */
 
-import React from 'react';
+import {useMemo} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-const Root = ({
-    children, i18nCurrentData,
-    dispatch,
-    ...restProps
-}) => (
-    <span {...restProps}>
-        {children?.(i18nCurrentData)}
-    </span>
-);
+const I18n = ({
+    state, defaultLanguage, language, data,
+    index
+}) => {
 
-Root.propTypes = {
+    const [nameSpace, key] = useMemo(() => {
+        return index?.split('/') || [];
+    }, [index]);
 
-    children: PropTypes.func,
-    i18nCurrentData: PropTypes.object,
+    const i18ns = useMemo(() => {
+        return data[nameSpace];
+    }, [
+        data, nameSpace
+    ]);
 
-    dispatch: PropTypes.func
+    const currentLanguageMessage = i18ns?.[language]?.[key];
+
+    if (typeof currentLanguageMessage === 'function') {
+        return currentLanguageMessage(state);
+    }
+
+    if (currentLanguageMessage) {
+        return currentLanguageMessage;
+    }
+
+    const defaultLanguageMessage = i18ns?.[defaultLanguage]?.[key];
+
+    if (typeof defaultLanguageMessage === 'function') {
+        return defaultLanguageMessage(state);
+    }
+
+    if (defaultLanguageMessage) {
+        return defaultLanguageMessage;
+    }
+
+    return '';
+
+};
+
+I18n.propTypes = {
+
+    state: PropTypes.object,
+    defaultLanguage: PropTypes.string,
+    language: PropTypes.string,
+    data: PropTypes.object,
+
+    index: PropTypes.any
 
 };
 
 export default connect(state => ({
-    i18nCurrentData: state.i18n.current
-}))(Root);
+    state,
+    defaultLanguage: state.i18n.defaultLanguage,
+    language: state.i18n.language,
+    data: state.i18n.data
+}))(I18n);

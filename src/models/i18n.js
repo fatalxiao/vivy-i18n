@@ -14,19 +14,19 @@ export default function createI18n(nameSpace, defaultLanguage = 'en-US') {
         state: {
 
             /**
+             * Default language
+             */
+            defaultLanguage,
+
+            /**
              * Current language
              */
             language: defaultLanguage,
 
             /**
-             * Origin I18ns data in models
+             * I18ns data in models
              */
-            origin: {},
-
-            /**
-             * Current language I18ns data
-             */
-            current: {}
+            data: {}
 
         },
         reducers: {
@@ -38,20 +38,10 @@ export default function createI18n(nameSpace, defaultLanguage = 'en-US') {
              * @returns {*&{language: (string|*)}}
              */
             switchLanguage: (state, {language}) => {
-
-                const {origin} = state;
-                const current = {};
-
-                Object.entries(origin).forEach(([nameSpace, i18ns]) => {
-                    current[nameSpace] = i18ns?.[language];
-                });
-
                 return {
                     ...state,
-                    language: language,
-                    current
+                    language: language
                 };
-
             },
 
             /**
@@ -62,20 +52,13 @@ export default function createI18n(nameSpace, defaultLanguage = 'en-US') {
              * @returns {Object}
              */
             register: (state, {nameSpace, i18ns}) => {
-
-                const {language} = state;
-                const origin = {...state.origin};
-                const current = {...state.current};
-
-                origin[nameSpace] = i18ns;
-                current[nameSpace] = i18ns?.[language];
-
                 return {
                     ...state,
-                    origin,
-                    current
+                    data: {
+                        ...state.data,
+                        [nameSpace]: i18ns
+                    }
                 };
-
             },
 
             /**
@@ -86,16 +69,12 @@ export default function createI18n(nameSpace, defaultLanguage = 'en-US') {
              */
             unregister: (state, {nameSpace}) => {
 
-                const origin = {...state.origin};
-                const current = {...state.current};
-
-                delete origin[nameSpace];
-                delete current[nameSpace];
+                const data = {...state.data};
+                delete data[nameSpace];
 
                 return {
                     ...state,
-                    origin,
-                    current
+                    data
                 };
 
             }
