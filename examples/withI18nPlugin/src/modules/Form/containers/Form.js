@@ -43,27 +43,29 @@ const Form = ({
     return (
         <form>
 
-            <p>
+            <div>
                 <label>
                     <I18n index="form/userName"/>
                     <input value={userName}
                            onChange={handleUserNameChange}/>
                 </label>
-            </p>
+            </div>
 
-            <p>
+            <div>
                 <label>
                     <I18n index="form/password"/>
                     <input value={password}
                            onChange={handlePasswordChange}/>
                 </label>
-                {
-                    password?.length < 8 ?
-                        <I18n index="form/passwordErrorMsg"/>
-                        :
-                        null
-                }
-            </p>
+                <div>
+                    {
+                        password && password?.length < 8 ?
+                            <I18n index="form/passwordErrorMsg"/>
+                            :
+                            null
+                    }
+                </div>
+            </div>
 
         </form>
     );
