@@ -9,14 +9,21 @@ import {I18n} from 'vivy-i18n';
 
 const Form = () => (
     <form>
-        <label>
-            <I18n index="form/firstName"/>
-            <input/>
-        </label>
-        <label>
-            <I18n index="form/lastName"/>
-            <input/>
-        </label>
+
+        <p>
+            <label>
+                <I18n index="form/userName"/>
+                <input/>
+            </label>
+        </p>
+
+        <p>
+            <label>
+                <I18n index="form/password"/>
+                <input/>
+            </label>
+        </p>
+
     </form>
 );
 

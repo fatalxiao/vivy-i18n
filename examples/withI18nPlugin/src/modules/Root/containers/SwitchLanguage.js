@@ -11,6 +11,10 @@ const SwitchLanguage = ({
     dispatch
 }) => {
 
+    /**
+     * Update language to I18n plugin when changed
+     * @type {(function(*): void)|*}
+     */
     const handleChange = useCallback(e => {
         dispatch?.({
             type: 'i18n/switchLanguage',
@@ -21,15 +25,17 @@ const SwitchLanguage = ({
     ]);
 
     return (
-        <select value={language}
-                onChange={handleChange}>
-            <option value="en-US">
-                en-US
-            </option>
-            <option value="zh-CN">
-                zh-CN
-            </option>
-        </select>
+        <p>
+            <select value={language}
+                    onChange={handleChange}>
+                <option value="en-US">
+                    en-US
+                </option>
+                <option value="zh-CN">
+                    zh-CN
+                </option>
+            </select>
+        </p>
     );
 
 };
