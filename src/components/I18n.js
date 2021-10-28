@@ -11,18 +11,34 @@ const I18n = ({
     index
 }) => {
 
+    /**
+     * Parse index to nameSpace and key
+     */
     const [nameSpace, key] = useMemo(() => {
         return index?.split('/') || [];
-    }, [index]);
+    }, [
+        index
+    ]);
 
+    /**
+     * Get I18n config in data
+     * @type {*}
+     */
     const i18ns = useMemo(() => {
         return data[nameSpace];
     }, [
         data, nameSpace
     ]);
 
+    /**
+     * Get current language message from I18n config
+     * @type {*}
+     */
     const currentLanguageMessage = i18ns?.[language]?.[key];
 
+    /**
+     * Pass state to functional message
+     */
     if (typeof currentLanguageMessage === 'function') {
         return currentLanguageMessage(state);
     }
@@ -31,8 +47,15 @@ const I18n = ({
         return currentLanguageMessage;
     }
 
+    /**
+     * Get default language message from I18n config
+     * @type {*}
+     */
     const defaultLanguageMessage = i18ns?.[defaultLanguage]?.[key];
 
+    /**
+     * Pass state to functional message
+     */
     if (typeof defaultLanguageMessage === 'function') {
         return defaultLanguageMessage(state);
     }
@@ -52,6 +75,9 @@ I18n.propTypes = {
     language: PropTypes.string,
     data: PropTypes.object,
 
+    /**
+     * format: '{MODEL_NAMESPACE}/{I18N_KEY}'
+     */
     index: PropTypes.any
 
 };
