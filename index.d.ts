@@ -13,7 +13,12 @@ export interface VivyI18nPluginOption {
     /**
      * NameSpace of "i18n" Model
      */
-    i18nModelNameSpace?: string
+    i18nModelNameSpace?: string,
+
+    /**
+     * Default language
+     */
+    defaultLanguage?: string
 
 }
 
