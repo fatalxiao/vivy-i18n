@@ -4,6 +4,10 @@
 
 export default {
     nameSpace: 'form',
+    state: {
+        userName: '',
+        password: ''
+    },
     i18ns: {
         'en-US': {
             userName: 'User Name',
@@ -17,10 +21,6 @@ export default {
             passwordErrorMsg: state =>
                 `最小长度为 8, 当前长度为 ${state.form.password?.length || 0}`
         }
-    },
-    state: {
-        userName: '',
-        password: ''
     },
     reducers: {
 
