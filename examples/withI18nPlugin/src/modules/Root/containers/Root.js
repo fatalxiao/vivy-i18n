@@ -3,27 +3,18 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 
 // Components
+import {I18n} from 'vivy-i18n';
 import SwitchLanguage from './SwitchLanguage';
 import Form from '../../Form/containers/Form';
 
-const Root = ({
-    title
-}) => (
+const Root = () => (
     <>
-        <h1>{title}</h1>
+        <h1><I18n index="root/title"/></h1>
         <SwitchLanguage/>
         <Form/>
     </>
 );
 
-Root.propTypes = {
-    title: PropTypes.string
-};
-
-export default connect(state => ({
-    title: state.i18n.current.root.title
-}))(Root);
+export default Root;

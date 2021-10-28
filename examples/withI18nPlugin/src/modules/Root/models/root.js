@@ -4,12 +4,12 @@
 
 export default {
     nameSpace: 'root',
-    i18ns: {
+    i18ns: state => ({
         'en-US': {
             title: 'Here is Title'
         },
         'zh-CN': {
             title: '这是标题'
         }
-    }
+    })
 };
