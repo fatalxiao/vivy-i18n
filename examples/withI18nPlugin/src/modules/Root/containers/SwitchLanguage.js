@@ -1,12 +1,12 @@
 /**
- * @file Root.js
+ * @file SwitchLanguage.js
  */
 
 import React, {useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-const Root = ({
+const SwitchLanguage = ({
     language,
     dispatch
 }) => {
@@ -34,7 +34,7 @@ const Root = ({
 
 };
 
-Root.propTypes = {
+SwitchLanguage.propTypes = {
 
     language: PropTypes.string,
 
@@ -44,4 +44,4 @@ Root.propTypes = {
 
 export default connect(state => ({
     language: state.i18n.language
-}))(Root);
+}))(SwitchLanguage);
