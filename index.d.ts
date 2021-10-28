@@ -26,4 +26,4 @@ export interface VivyI18nPluginOption {
  * Create Vivy I18n plugin instance
  * @param options
  */
-export default function createVivyI18nPlugin(options?: VivyI18nPluginOption);
+export default function VivyI18n(options?: VivyI18nPluginOption);

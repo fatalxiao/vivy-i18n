@@ -22,7 +22,7 @@ const DEFAULT_OPTIONS = {
  * @param options
  * @returns {Object}
  */
-export default function createVivyI18nPlugin(options = {}) {
+export default function VivyI18n(options = {}) {
 
     const opts = {...DEFAULT_OPTIONS, ...options};
 
