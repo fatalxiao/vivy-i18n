@@ -11,7 +11,7 @@
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "react-redux": "^7.2.6",
-        "vivy": "^0.5.1",
+        "vivy": "^0.5.2",
         "vivy-i18n": "^0.1.1"
     },
     "devDependencies": {
