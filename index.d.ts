@@ -1,4 +1,4 @@
-import * as I18n from './src/components/I18n';
+import * as I18n from './dist/components/I18n';
 
 /**
  * I18n
