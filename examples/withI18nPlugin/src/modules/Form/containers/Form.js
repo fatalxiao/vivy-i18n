@@ -5,26 +5,26 @@
 import React, {useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {bindModelActionCreators} from 'vivy';
 
 // Components
 import {I18n} from 'vivy-i18n';
 
 const Form = ({
     userName, password,
-    dispatch
+    updateUserName, updatePassword
 }) => {
 
     /**
-     * Update user name to state when changed
+     * Update username to state when changed
      * @type {(function(*): void)|*}
      */
     const handleUserNameChange = useCallback(e => {
-        dispatch?.({
-            type: 'form/updateUserName',
+        updateUserName?.({
             userName: e.target.value
         });
     }, [
-        dispatch
+        updateUserName
     ]);
 
     /**
@@ -32,12 +32,11 @@ const Form = ({
      * @type {(function(*): void)|*}
      */
     const handlePasswordChange = useCallback(e => {
-        dispatch?.({
-            type: 'form/updatePassword',
+        updatePassword?.({
             password: e.target.value
         });
     }, [
-        dispatch
+        updatePassword
     ]);
 
     return (
@@ -77,11 +76,15 @@ Form.propTypes = {
     userName: PropTypes.string,
     password: PropTypes.string,
 
-    dispatch: PropTypes.func
+    updateUserName: PropTypes.func,
+    updatePassword: PropTypes.func
 
 };
 
 export default connect(state => ({
     userName: state.form.userName,
     password: state.form.password
-}))(Form);
+}), dispatch => bindModelActionCreators({
+    updateUserName: 'form/updateUserName',
+    updatePassword: 'form/updatePassword'
+}, dispatch))(Form);

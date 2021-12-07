@@ -5,10 +5,11 @@
 import React, {useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {bindModelActionCreators} from 'vivy';
 
 const SwitchLanguage = ({
     language,
-    dispatch
+    switchLanguage
 }) => {
 
     /**
@@ -16,12 +17,11 @@ const SwitchLanguage = ({
      * @type {(function(*): void)|*}
      */
     const handleChange = useCallback(e => {
-        dispatch?.({
-            type: 'i18n/switchLanguage',
+        switchLanguage?.({
             language: e.target.value
         });
     }, [
-        dispatch
+        switchLanguage
     ]);
 
     return (
@@ -44,10 +44,12 @@ SwitchLanguage.propTypes = {
 
     language: PropTypes.string,
 
-    dispatch: PropTypes.func
+    switchLanguage: PropTypes.func
 
 };
 
 export default connect(state => ({
     language: state.i18n.language
-}))(SwitchLanguage);
+}), dispatch => bindModelActionCreators({
+    switchLanguage: 'i18n/switchLanguage'
+}, dispatch))(SwitchLanguage);
