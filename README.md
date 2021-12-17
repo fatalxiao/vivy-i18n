@@ -55,3 +55,72 @@ $ npm run start
 
 ### Basic usage
 
+index.js
+
+```js
+import React from 'react';
+import {render} from 'react-dom';
+import {Provider} from 'react-redux';
+
+// Import Vivy
+import Vivy from 'vivy';
+
+// Import Vivy i18n plugin
+import VivyI18n from 'vivy-i18n';
+
+// Import your component and model
+import App from 'path_to_app_component';
+import app from 'path_to_app_model';
+
+// Create vivy
+const vivy = Vivy();
+
+// Apply I18n plugin
+vivy.use(VivyI18n());
+
+// Create store after configuration
+const store = vivy.createStore();
+
+// Register vivy models
+store.registerModels([
+    app
+]);
+
+render(
+    <Provider store={store}>
+        <App/>
+    </Provider>,
+    document.getElementById('app-container')
+);
+```
+
+App.js
+
+```js
+import React from 'react';
+
+// Import I18n translate component from plugin.
+import {I18n} from 'vivy-i18n';
+
+const App = () => (
+    <I18n index="app/title"/>
+);
+
+export default App;
+```
+
+app.js
+
+```js
+export default {
+    nameSpace: 'app',
+    i18ns: {
+        'en-US': {
+            title: 'Vivy I18n exmaple'
+        },
+        'zh-ZN': {
+            title: 'Vivy I18n 例子'
+        }
+    }
+};
+```
