@@ -13,7 +13,7 @@ import form from './modules/Form/models/form';
 
 // Import Vivy
 import Vivy from 'vivy';
-import VivyI18n from 'vivy-i18n';
+import VivyI18n from '../../../src';
 
 // Create vivy
 const vivy = Vivy();
