@@ -6,7 +6,7 @@
 import createI18n from './models/i18n';
 
 // Components
-// export I18n from './components/I18n';
+export I18n from './components/I18n';
 
 /**
  * Default vivy-i18n options
