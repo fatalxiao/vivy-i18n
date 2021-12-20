@@ -2,70 +2,75 @@
  * @file I18n.js
  */
 
-import {useMemo} from 'react';
+// import {useMemo} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindModelActionCreators} from 'vivy';
 
 const I18n = ({
     state, defaultLanguage, language, data,
-    index
+    index,
+    translate
 }) => {
 
-    /**
-     * Parse index to nameSpace and key
-     */
-    const [nameSpace, key] = useMemo(() => {
-        return index?.split('/') || [];
-    }, [
+    return translate({
         index
-    ]);
+    });
 
-    /**
-     * Get I18n config in data
-     * @type {*}
-     */
-    const i18ns = useMemo(() => {
-        return data[nameSpace];
-    }, [
-        data, nameSpace
-    ]);
-
-    /**
-     * Get current language message from I18n config
-     * @type {*}
-     */
-    const currentLanguageMessage = i18ns?.[language]?.[key];
-
-    /**
-     * Pass state to functional message
-     */
-    if (typeof currentLanguageMessage === 'function') {
-        return currentLanguageMessage(state);
-    }
-
-    if (currentLanguageMessage) {
-        return currentLanguageMessage;
-    }
-
-    /**
-     * Get default language message from I18n config
-     * @type {*}
-     */
-    const defaultLanguageMessage = i18ns?.[defaultLanguage]?.[key];
-
-    /**
-     * Pass state to functional message
-     */
-    if (typeof defaultLanguageMessage === 'function') {
-        return defaultLanguageMessage(state);
-    }
-
-    if (defaultLanguageMessage) {
-        return defaultLanguageMessage;
-    }
-
-    return '';
+    // /**
+    //  * Parse index to nameSpace and key
+    //  */
+    // const [nameSpace, key] = useMemo(() => {
+    //     return index?.split('/') || [];
+    // }, [
+    //     index
+    // ]);
+    //
+    // /**
+    //  * Get I18n config in data
+    //  * @type {*}
+    //  */
+    // const i18ns = useMemo(() => {
+    //     return data[nameSpace];
+    // }, [
+    //     data, nameSpace
+    // ]);
+    //
+    // /**
+    //  * Get current language message from I18n config
+    //  * @type {*}
+    //  */
+    // const currentLanguageMessage = i18ns?.[language]?.[key];
+    //
+    // /**
+    //  * Pass state to functional message
+    //  */
+    // if (typeof currentLanguageMessage === 'function') {
+    //     return currentLanguageMessage(state);
+    // }
+    //
+    // if (currentLanguageMessage) {
+    //     return currentLanguageMessage;
+    // }
+    //
+    // /**
+    //  * Get default language message from I18n config
+    //  * @type {*}
+    //  */
+    // const defaultLanguageMessage = i18ns?.[defaultLanguage]?.[key];
+    //
+    // /**
+    //  * Pass state to functional message
+    //  */
+    // if (typeof defaultLanguageMessage === 'function') {
+    //     return defaultLanguageMessage(state);
+    // }
+    //
+    // if (defaultLanguageMessage) {
+    //     return defaultLanguageMessage;
+    // }
+    //
+    // return '';
 
 };
 
@@ -79,7 +84,9 @@ I18n.propTypes = {
     /**
      * format: '{MODEL_NAMESPACE}/{I18N_KEY}'
      */
-    index: PropTypes.any
+    index: PropTypes.any,
+
+    translate: PropTypes.func
 
 };
 
@@ -88,4 +95,6 @@ export default connect(state => ({
     defaultLanguage: state.i18n.defaultLanguage,
     language: state.i18n.language,
     data: state.i18n.data
-}))(I18n);
+}), dispatch => bindModelActionCreators({
+    translate: 'i18n/translate'
+}, dispatch))(I18n);
