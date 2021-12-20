@@ -29,6 +29,52 @@ export default function createI18n(nameSpace, defaultLanguage = 'en-US') {
             data: {}
 
         },
+        actions: {
+
+            translate: ({index}) => (dispatch, getState) => {
+
+                if (!index) {
+                    return null;
+                }
+
+                const state = getState();
+                const {defaultLanguage, language, data} = state.i18n;
+
+                // Parse index to nameSpace and key
+                const [nameSpace, key] = index?.split('/') || [];
+
+                // Get I18n config in data
+                const i18ns = data[nameSpace];
+
+                // Get current language message from I18n config
+                const currentLanguageMessage = i18ns?.[language]?.[key];
+
+                // Pass state to functional message
+                if (typeof currentLanguageMessage === 'function') {
+                    return currentLanguageMessage(state);
+                }
+
+                if (currentLanguageMessage) {
+                    return currentLanguageMessage;
+                }
+
+                // Get default language message from I18n config
+                const defaultLanguageMessage = i18ns?.[defaultLanguage]?.[key];
+
+                // Pass state to functional message
+                if (typeof defaultLanguageMessage === 'function') {
+                    return defaultLanguageMessage(state);
+                }
+
+                if (defaultLanguageMessage) {
+                    return defaultLanguageMessage;
+                }
+
+                return '';
+
+            }
+
+        },
         reducers: {
 
             /**
