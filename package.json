@@ -2,7 +2,7 @@
     "name": "vivy-i18n",
     "author": "liangxiaojun",
     "version": "0.2.2",
-    "description": "Vivy I18n plugin",
+    "description": "A Vivy Plugin to handle i18ns in Vivy model to implement i18n.",
     "main": "./dist/index.js",
     "files": [
         "src",
@@ -20,9 +20,10 @@
         "url": "https://github.com/fatalxiao/vivy-i18n"
     },
     "keywords": [
+        "react",
         "redux",
-        "vivy",
-        "i18n"
+        "i18n",
+        "vivy"
     ],
     "license": "MIT",
     "bugs": {
