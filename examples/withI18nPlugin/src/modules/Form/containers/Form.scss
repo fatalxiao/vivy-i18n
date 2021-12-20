@@ -1,0 +1,40 @@
+/**
+ * @file Form.scss
+ */
+
+.form {
+    padding: 16px;
+
+    label {
+        display: block;
+        margin-top: 16px;
+
+        input {
+            box-sizing: border-box;
+            display: block;
+            width: 160px;
+            height: 32px;
+            padding: 0 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    }
+
+    .password-error {
+        display: inline-block;
+        padding: 8px;
+        margin-top: 8px;
+        background: #fdd;
+        border: 1px solid #f55;
+        border-radius: 8px;
+        color: #f55;
+        font-size: 12px;
+    }
+
+    button {
+        display: block;
+        margin-top: 32px;
+        width: 80px;
+        height: 32px;
+    }
+}

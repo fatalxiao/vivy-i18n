@@ -7,6 +7,8 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindModelActionCreators} from 'vivy';
 
+import './SwitchLanguage.scss';
+
 const SwitchLanguage = ({
     language,
     switchLanguage
@@ -25,17 +27,16 @@ const SwitchLanguage = ({
     ]);
 
     return (
-        <p>
-            <select value={language}
-                    onChange={handleChange}>
-                <option value="en-US">
-                    en-US
-                </option>
-                <option value="zh-CN">
-                    zh-CN
-                </option>
-            </select>
-        </p>
+        <select className="switch-language"
+                value={language}
+                onChange={handleChange}>
+            <option value="en-US">
+                en-US
+            </option>
+            <option value="zh-CN">
+                zh-CN
+            </option>
+        </select>
     );
 
 };

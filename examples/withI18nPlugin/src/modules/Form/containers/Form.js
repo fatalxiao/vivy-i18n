@@ -10,6 +10,9 @@ import {bindModelActionCreators} from 'vivy';
 // Components
 import {I18n} from 'vivy-i18n';
 
+// Styles
+import './Form.scss';
+
 const Form = ({
     username, password,
     updateUserName, updatePassword, login
@@ -40,33 +43,30 @@ const Form = ({
     ]);
 
     return (
-        <form>
+        <form className="form">
 
-            <div>
-                <label>
-                    <I18n index="form/username"/>
-                    <input value={username}
-                           onChange={handleUserNameChange}
-                           placeholder="admin"/>
-                </label>
-            </div>
+            <label>
+                <I18n index="form/username"/>
+                <input value={username}
+                       onChange={handleUserNameChange}
+                       placeholder="admin"/>
+            </label>
 
-            <div>
-                <label>
-                    <I18n index="form/password"/>
-                    <input value={password}
-                           onChange={handlePasswordChange}
-                           placeholder="admin"/>
-                </label>
-                <div>
-                    {
-                        password && password?.length < 5 ?
-                            <I18n index="form/passwordErrorMsg"/>
-                            :
-                            null
-                    }
-                </div>
-            </div>
+            <label>
+                <I18n index="form/password"/>
+                <input value={password}
+                       onChange={handlePasswordChange}
+                       placeholder="admin"/>
+            </label>
+
+            {
+                password && password?.length < 5 ?
+                    <div className="password-error">
+                        <I18n index="form/passwordErrorMsg"/>
+                    </div>
+                    :
+                    null
+            }
 
             <button type="button"
                     onClick={login}>
