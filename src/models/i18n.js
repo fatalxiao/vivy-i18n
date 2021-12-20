@@ -31,10 +31,15 @@ export default function createI18n(nameSpace, defaultLanguage = 'en-US') {
         },
         actions: {
 
+            /**
+             * Translate index
+             * @param index
+             * @returns {(function(*, *): (string|*))|*}
+             */
             translate: ({index}) => (dispatch, getState) => {
 
                 if (!index) {
-                    return null;
+                    return '';
                 }
 
                 const state = getState();

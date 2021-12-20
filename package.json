@@ -33,7 +33,8 @@
         "prop-types": ">=15.x",
         "react": ">=16.x",
         "react-dom": ">=16.x",
-        "react-redux": ">=7.x"
+        "react-redux": ">=7.x",
+        "vivy": "1.0.0"
     },
     "devDependencies": {
         "@babel/core": "^7.16.5",
