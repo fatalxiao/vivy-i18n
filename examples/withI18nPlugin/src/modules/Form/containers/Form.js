@@ -46,7 +46,8 @@ const Form = ({
                 <label>
                     <I18n index="form/userName"/>
                     <input value={userName}
-                           onChange={handleUserNameChange}/>
+                           onChange={handleUserNameChange}
+                           placeholder="admin"/>
                 </label>
             </div>
 
@@ -54,11 +55,12 @@ const Form = ({
                 <label>
                     <I18n index="form/password"/>
                     <input value={password}
-                           onChange={handlePasswordChange}/>
+                           onChange={handlePasswordChange}
+                           placeholder="admin"/>
                 </label>
                 <div>
                     {
-                        password && password?.length < 8 ?
+                        password && password?.length < 5 ?
                             <I18n index="form/passwordErrorMsg"/>
                             :
                             null
