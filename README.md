@@ -12,6 +12,8 @@
 
 [pieb-with-dpe-frontend-url]: https://github.com/fatalxiao/pieb-with-dpe-frontend
 
+[with-i18n-plugin-example-form-url]: https://github.com/fatalxiao/vivy-i18n/blob/main/examples/withI18nPlugin/src/modules/Form/models/form.js
+
 # vivy-i18n
 
 [![NPM Version][npm-image]][npm-url]
@@ -124,3 +126,5 @@ export default {
     }
 };
 ```
+
+You can find detail usage in [form.js][with-i18n-plugin-example-form-url].
