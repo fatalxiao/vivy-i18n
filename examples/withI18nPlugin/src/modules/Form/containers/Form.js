@@ -11,8 +11,8 @@ import {bindModelActionCreators} from 'vivy';
 import {I18n} from 'vivy-i18n';
 
 const Form = ({
-    userName, password,
-    updateUserName, updatePassword
+    username, password,
+    updateUserName, updatePassword, login
 }) => {
 
     /**
@@ -21,7 +21,7 @@ const Form = ({
      */
     const handleUserNameChange = useCallback(e => {
         updateUserName?.({
-            userName: e.target.value
+            username: e.target.value
         });
     }, [
         updateUserName
@@ -44,8 +44,8 @@ const Form = ({
 
             <div>
                 <label>
-                    <I18n index="form/userName"/>
-                    <input value={userName}
+                    <I18n index="form/username"/>
+                    <input value={username}
                            onChange={handleUserNameChange}
                            placeholder="admin"/>
                 </label>
@@ -68,6 +68,11 @@ const Form = ({
                 </div>
             </div>
 
+            <button type="button"
+                    onClick={login}>
+                Login
+            </button>
+
         </form>
     );
 
@@ -75,18 +80,20 @@ const Form = ({
 
 Form.propTypes = {
 
-    userName: PropTypes.string,
+    username: PropTypes.string,
     password: PropTypes.string,
 
     updateUserName: PropTypes.func,
-    updatePassword: PropTypes.func
+    updatePassword: PropTypes.func,
+    login: PropTypes.func
 
 };
 
 export default connect(state => ({
-    userName: state.form.userName,
+    username: state.form.username,
     password: state.form.password
 }), dispatch => bindModelActionCreators({
     updateUserName: 'form/updateUserName',
-    updatePassword: 'form/updatePassword'
+    updatePassword: 'form/updatePassword',
+    login: 'form/login'
 }, dispatch))(Form);

@@ -23,7 +23,20 @@ module.exports = merge(baseConfig, {
         static: path.join(__dirname, './dist'),
         hot: true,
         port: 3000,
-        historyApiFallback: true
+        historyApiFallback: true,
+        onBeforeSetupMiddleware: server => {
+
+            // Login reponse
+            server.app.get('/login', (req, res) => {
+                res.json({
+                    code: req.query.username === 'admin' && req.query.password === 'admin' ?
+                        2000
+                        :
+                        4000
+                });
+            });
+
+        }
     },
 
     plugins: [

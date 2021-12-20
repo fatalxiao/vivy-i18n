@@ -2,38 +2,74 @@
  * @file form.js
  */
 
+// Apis
+import {login} from '../apis/FormApi';
+
 export default {
     nameSpace: 'form',
     state: {
-        userName: '',
+        username: '',
         password: ''
     },
     i18ns: {
         'en-US': {
-            userName: 'User Name',
+            username: 'User Name',
             password: 'Password',
             passwordErrorMsg: state =>
-                `Mini length is 5, current length is ${state.form.password?.length || 0}`
+                `Mini length is 5, current length is ${state.form.password?.length || 0}`,
+            loginSuccess: 'Login successfully!',
+            loginFailure: 'Login failure!'
         },
         'zh-CN': {
-            userName: '用户名',
+            username: '用户名',
             password: '密码',
             passwordErrorMsg: state =>
-                `最小长度为 5, 当前长度为 ${state.form.password?.length || 0}`
+                `最小长度为 5, 当前长度为 ${state.form.password?.length || 0}`,
+            loginSuccess: '登录成功！',
+            loginFailure: '登录失败！'
         }
+    },
+    actions: {
+
+        /**
+         * Do login
+         * @returns {(function(*, *): Promise<void>)|*}
+         */
+        login: () => async (dispatch, getState) => {
+
+            const {username, password} = getState().form;
+
+            try {
+
+                const response = await login({
+                    username,
+                    password
+                });
+
+                alert(dispatch({
+                    type: 'i18n/translate',
+                    index: `form/${response?.data?.code === 2000 ? 'loginSuccess' : 'loginFailure'}`
+                }));
+
+            } catch (e) {
+                // ...
+            }
+
+        }
+
     },
     reducers: {
 
         /**
          * Update username to state
          * @param state
-         * @param userName
-         * @returns {*&{userName}}
+         * @param username
+         * @returns {*&{username}}
          */
-        updateUserName: (state, {userName}) => {
+        updateUserName: (state, {username}) => {
             return {
                 ...state,
-                userName
+                username
             };
         },
 
