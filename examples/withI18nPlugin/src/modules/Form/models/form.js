@@ -17,6 +17,7 @@ export default {
             password: 'Password',
             passwordErrorMsg: state =>
                 `Mini length is 5, current length is ${state.form.password?.length || 0}.`,
+            login: 'Login',
             loginSuccess: 'Login successfully!',
             loginFailure: 'Login failure!'
         },
@@ -25,6 +26,7 @@ export default {
             password: '密码',
             passwordErrorMsg: state =>
                 `最小长度为 5, 当前长度为 ${state.form.password?.length || 0}。`,
+            login: '登录',
             loginSuccess: '登录成功！',
             loginFailure: '登录失败！'
         }

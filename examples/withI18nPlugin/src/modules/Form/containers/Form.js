@@ -70,7 +70,7 @@ const Form = ({
 
             <button type="button"
                     onClick={login}>
-                Login
+                <I18n index="form/login"/>
             </button>
 
         </form>
