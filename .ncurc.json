@@ -1,7 +1,9 @@
 {
     "upgrade": true,
     "reject": [
+        "prop-types",
         "react",
-        "react-dom"
+        "react-dom",
+        "react-redux"
     ]
 }
