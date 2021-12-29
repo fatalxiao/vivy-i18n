@@ -4,12 +4,12 @@
 
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {bindModelActionCreators} from 'vivy';
 
 const I18n = ({
     index,
-    translate
-}) => translate({
+    dispatch
+}) => dispatch({
+    type: 'i18n/translate',
     index
 });
 
@@ -24,7 +24,7 @@ I18n.propTypes = {
      */
     index: PropTypes.any,
 
-    translate: PropTypes.func
+    dispatch: PropTypes.func
 
 };
 
@@ -32,6 +32,4 @@ export default connect(state => ({
     defaultLanguage: state.i18n.defaultLanguage,
     language: state.i18n.language,
     data: state.i18n.data
-}), dispatch => bindModelActionCreators({
-    translate: 'i18n/translate'
-}, dispatch))(I18n);
+}))(I18n);
