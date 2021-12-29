@@ -21,13 +21,14 @@ module.exports = merge(baseConfig, {
 
     devServer: {
         static: path.join(__dirname, './dist'),
+        open: true,
         hot: true,
         port: 3000,
         historyApiFallback: true,
-        onBeforeSetupMiddleware: server => {
+        setupMiddlewares: (middlewares, devServer) => {
 
             // Login reponse
-            server.app.get('/login', (req, res) => {
+            devServer.app.get('/login', (req, res) => {
                 res.json({
                     code: req.query.username === 'admin' && req.query.password === 'admin' ?
                         2000
@@ -35,6 +36,8 @@ module.exports = merge(baseConfig, {
                         4000
                 });
             });
+
+            return middlewares;
 
         }
     },
