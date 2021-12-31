@@ -21,6 +21,8 @@
 
 A [Vivy][vivy-url] plugin which extend Vivy model to implement i18n.
 
+## Docs
+
 * [Installation](#installation)
 * [Examples](#examples)
     * [Examples in repository](#examples-in-repository)
