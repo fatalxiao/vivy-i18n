@@ -16,6 +16,11 @@ export interface VivyI18nPluginOption {
     i18nModelNameSpace?: string,
 
     /**
+     * Current language
+     */
+    language?: string,
+
+    /**
      * Default language
      */
     defaultLanguage?: string
