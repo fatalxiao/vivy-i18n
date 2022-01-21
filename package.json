@@ -1,7 +1,7 @@
 {
     "name": "vivy-i18n",
     "author": "liangxiaojun",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "A Vivy Plugin to handle i18ns in Vivy model to implement i18n.",
     "main": "./dist/index.js",
     "files": [
