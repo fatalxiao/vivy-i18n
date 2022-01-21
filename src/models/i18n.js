@@ -5,23 +5,24 @@
 /**
  * Create I18n model
  * @param nameSpace {string}
+ * @param language {string}
  * @param defaultLanguage {string}
  * @returns {Object}
  */
-export default function createI18n(nameSpace, defaultLanguage = 'en-US') {
+export default function createI18n(nameSpace, language, defaultLanguage = 'en-US') {
     return {
         nameSpace: nameSpace || 'i18n',
         state: {
 
             /**
+             * Current language
+             */
+            language,
+
+            /**
              * Default language
              */
             defaultLanguage,
-
-            /**
-             * Current language
-             */
-            language: defaultLanguage,
 
             /**
              * I18ns data in models
@@ -43,7 +44,7 @@ export default function createI18n(nameSpace, defaultLanguage = 'en-US') {
                 }
 
                 const state = getState();
-                const {defaultLanguage, language, data} = state.i18n;
+                const {language, defaultLanguage, data} = state.i18n;
 
                 // Parse index to nameSpace and key
                 const [nameSpace, key] = index?.split('/') || [];
