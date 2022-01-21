@@ -15,10 +15,6 @@ const I18n = ({
 
 I18n.propTypes = {
 
-    defaultLanguage: PropTypes.string,
-    language: PropTypes.string,
-    data: PropTypes.object,
-
     /**
      * format: '{MODEL_NAMESPACE}/{I18N_KEY}'
      */
@@ -28,8 +24,4 @@ I18n.propTypes = {
 
 };
 
-export default connect(state => ({
-    defaultLanguage: state.i18n.defaultLanguage,
-    language: state.i18n.language,
-    data: state.i18n.data
-}))(I18n);
+export default connect()(I18n);
