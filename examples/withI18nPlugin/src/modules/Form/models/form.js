@@ -5,6 +5,9 @@
 // Apis
 import {login} from '../apis/FormApi';
 
+// Vendors
+import {translate} from 'vivy-i18n';
+
 export default {
     nameSpace: 'form',
     state: {
@@ -46,11 +49,6 @@ export default {
                 const response = await login({
                     username,
                     password
-                });
-
-                const translate = index => dispatch({
-                    type: 'i18n/translate',
-                    index
                 });
 
                 alert(translate(`form/${response?.data?.code === 2000 ? 'loginSuccess' : 'loginFailure'}`));
