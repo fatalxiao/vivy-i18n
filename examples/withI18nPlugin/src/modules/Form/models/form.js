@@ -48,10 +48,12 @@ export default {
                     password
                 });
 
-                alert(dispatch({
+                const translate = index => dispatch({
                     type: 'i18n/translate',
-                    index: `form/${response?.data?.code === 2000 ? 'loginSuccess' : 'loginFailure'}`
-                }));
+                    index
+                });
+
+                alert(translate(`form/${response?.data?.code === 2000 ? 'loginSuccess' : 'loginFailure'}`));
 
             } catch (e) {
                 // ...
