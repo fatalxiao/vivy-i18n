@@ -8,6 +8,9 @@ import createI18n from './models/i18n';
 // Components
 export I18n from './components/I18n';
 
+// Utils
+export translate from './util/translate';
+
 /**
  * Default vivy-i18n options
  * @type {Object}
