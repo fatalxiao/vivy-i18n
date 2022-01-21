@@ -30,7 +30,7 @@ let store = null;
 let nameSpace = DEFAULT_OPTIONS.i18nModelNameSpace;
 
 /**
- * Translate i18ns data index
+ * Translate i18ns data by index
  * @param index
  * @returns {*}
  */
