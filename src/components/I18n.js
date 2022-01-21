@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 const I18n = ({
-    index,
+    index, i18n,
     dispatch
 }) => dispatch({
     type: 'i18n/translate',
@@ -20,8 +20,12 @@ I18n.propTypes = {
      */
     index: PropTypes.any,
 
+    i18n: PropTypes.object,
+
     dispatch: PropTypes.func
 
 };
 
-export default connect()(I18n);
+export default connect(state => ({
+    i18n: state.i18n
+}))(I18n);
