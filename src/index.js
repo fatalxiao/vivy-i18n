@@ -8,9 +8,6 @@ import createI18n from './models/i18n';
 // Components
 export I18n from './components/I18n';
 
-// Utils
-export translate from './util/translate';
-
 /**
  * Default vivy-i18n options
  * @type {Object}
@@ -19,6 +16,30 @@ const DEFAULT_OPTIONS = {
     i18nModelNameSpace: 'i18n',
     defaultLanguage: 'en-US'
 };
+
+/**
+ * Vivy store
+ * @type {null}
+ */
+let store = null;
+
+/**
+ * I18n plugin name space
+ * @type {string}
+ */
+let nameSpace = DEFAULT_OPTIONS.i18nModelNameSpace;
+
+/**
+ * Translate i18ns data index
+ * @param index
+ * @returns {*}
+ */
+export function translate(index) {
+    return store?.dispatch?.({
+        type: `${nameSpace}/translate`,
+        index
+    });
+}
 
 /**
  * Create Vivy I18n plugin
@@ -36,6 +57,15 @@ export default function VivyI18n(options = {}) {
         extraModels: [
             createI18n(i18nModelNameSpace, defaultLanguage)
         ],
+
+        /**
+         * Record vivyStore and i18nModelNameSpace when store created
+         * @param vivyStore
+         */
+        onCreateStore: vivyStore => {
+            store = vivyStore;
+            nameSpace = i18nModelNameSpace;
+        },
 
         /**
          * Register I18ns when register a Vivy model
