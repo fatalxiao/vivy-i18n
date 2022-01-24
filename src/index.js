@@ -51,12 +51,18 @@ export default function VivyI18n(options = {}) {
 
     const opts = {...DEFAULT_OPTIONS, ...options};
 
-    const {i18nModelNameSpace, language, defaultLanguage} = opts;
+    const {
+        i18nModelNameSpace, language, defaultLanguage,
+        onSwitchLanguage, onSwitchDefaultLanguage
+    } = opts;
 
     return {
 
         extraModels: [
-            createI18n(i18nModelNameSpace, language, defaultLanguage)
+            createI18n(
+                i18nModelNameSpace, language, defaultLanguage,
+                onSwitchLanguage, onSwitchDefaultLanguage
+            )
         ],
 
         /**

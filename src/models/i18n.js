@@ -7,9 +7,14 @@
  * @param nameSpace {string}
  * @param language {string}
  * @param defaultLanguage {string}
+ * @param onSwitchLanguage {Function}
+ * @param onSwitchDefaultLanguage {Function}
  * @returns {Object}
  */
-export default function createI18n(nameSpace, language = 'en-US', defaultLanguage = 'en-US') {
+export default function createI18n(
+    nameSpace, language = 'en-US', defaultLanguage = 'en-US',
+    onSwitchLanguage, onSwitchDefaultLanguage
+) {
     return {
         nameSpace: nameSpace || 'i18n',
         state: {
@@ -90,6 +95,7 @@ export default function createI18n(nameSpace, language = 'en-US', defaultLanguag
              * @returns {*&{language: (string|*)}}
              */
             switchLanguage: (state, {language}) => {
+                onSwitchLanguage?.(language);
                 return {
                     ...state,
                     language
@@ -103,6 +109,7 @@ export default function createI18n(nameSpace, language = 'en-US', defaultLanguag
              * @returns {*&{language: (string|*)}}
              */
             switchDefaultLanguage: (state, {defaultLanguage}) => {
+                onSwitchDefaultLanguage?.(defaultLanguage);
                 return {
                     ...state,
                     defaultLanguage

@@ -23,7 +23,17 @@ export interface VivyI18nPluginOption {
     /**
      * Default language
      */
-    defaultLanguage?: string
+    defaultLanguage?: string,
+
+    /**
+     * Switch language callback
+     */
+    onSwitchLanguage?: (language?: string) => void,
+
+    /**
+     * Switch default language callback
+     */
+    onSwitchDefaultLanguage?: (defaultLanguage?: string) => void,
 
 }
 
