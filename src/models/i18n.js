@@ -57,7 +57,7 @@ export default function createI18n(nameSpace, language = 'en-US', defaultLanguag
 
                 // Pass state to functional message
                 if (typeof currentLanguageMessage === 'function') {
-                    return currentLanguageMessage(state);
+                    return currentLanguageMessage(getState);
                 }
 
                 if (currentLanguageMessage) {
@@ -69,7 +69,7 @@ export default function createI18n(nameSpace, language = 'en-US', defaultLanguag
 
                 // Pass state to functional message
                 if (typeof defaultLanguageMessage === 'function') {
-                    return defaultLanguageMessage(state);
+                    return defaultLanguageMessage(getState);
                 }
 
                 if (defaultLanguageMessage) {
