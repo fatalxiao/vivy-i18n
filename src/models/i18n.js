@@ -62,7 +62,7 @@ export default function createI18n(
 
                 // Pass state to functional message
                 if (typeof currentLanguageMessage === 'function') {
-                    return currentLanguageMessage(getState);
+                    return currentLanguageMessage(getState, dispatch);
                 }
 
                 if (currentLanguageMessage) {
@@ -74,7 +74,7 @@ export default function createI18n(
 
                 // Pass state to functional message
                 if (typeof defaultLanguageMessage === 'function') {
-                    return defaultLanguageMessage(getState);
+                    return defaultLanguageMessage(getState, dispatch);
                 }
 
                 if (defaultLanguageMessage) {
