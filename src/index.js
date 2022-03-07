@@ -5,6 +5,9 @@
 // Models
 import createI18n from './models/i18n';
 
+// Utils
+import getTranslate from './utils/translate';
+
 // Components
 export I18n from './components/I18n';
 
@@ -36,10 +39,11 @@ let nameSpace = DEFAULT_OPTIONS.i18nModelNameSpace;
  * @returns {*}
  */
 export function translate(index) {
-    return store?.dispatch?.({
-        type: `${nameSpace}/translate`,
-        index
-    });
+    // return store?.dispatch?.({
+    //     type: `${nameSpace}/translate`,
+    //     index
+    // });
+    return getTranslate(store, nameSpace)(index);
 }
 
 /**
