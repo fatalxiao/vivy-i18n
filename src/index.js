@@ -6,7 +6,7 @@
 import createI18n from './models/i18n';
 
 // Utils
-import getTranslate from './utils/translate';
+import getTranslate from './utils/getTranslate';
 
 // Components
 export I18n from './components/I18n';

@@ -3,7 +3,7 @@
  */
 
 // Utils
-import getTranslate from '../utils/translate';
+import getTranslate from '../utils/getTranslate';
 
 /**
  * Create I18n model

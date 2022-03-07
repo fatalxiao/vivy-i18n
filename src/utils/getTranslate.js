@@ -1,5 +1,5 @@
 /**
- * @file translate.js
+ * @file getTranslate.js
  */
 
 export default (store, nameSpace) => index => {
