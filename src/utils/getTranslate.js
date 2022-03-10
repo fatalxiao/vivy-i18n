@@ -2,7 +2,7 @@
  * @file getTranslate.js
  */
 
-export default (store, nameSpace) => index => {
+export default ({store, nameSpace}) => index => {
 
     if (!store || !nameSpace || !index) {
         return '';

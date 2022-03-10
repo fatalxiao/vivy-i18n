@@ -21,17 +21,10 @@ const DEFAULT_OPTIONS = {
     defaultLanguage: 'en-US'
 };
 
-/**
- * Vivy store
- * @type {null}
- */
-let store = null;
-
-/**
- * I18n plugin name space
- * @type {string}
- */
-let nameSpace = DEFAULT_OPTIONS.i18nModelNameSpace;
+const translateConfig = {
+    store: null,
+    nameSpace: DEFAULT_OPTIONS.i18nModelNameSpace
+};
 
 /**
  * Translate i18ns data by index
@@ -39,11 +32,7 @@ let nameSpace = DEFAULT_OPTIONS.i18nModelNameSpace;
  * @returns {*}
  */
 export function translate(index) {
-    // return store?.dispatch?.({
-    //     type: `${nameSpace}/translate`,
-    //     index
-    // });
-    return getTranslate(store, nameSpace)(index);
+    return getTranslate(translateConfig)(index);
 }
 
 /**
@@ -60,6 +49,8 @@ export default function VivyI18n(options = {}) {
         onSwitchLanguage, onSwitchDefaultLanguage
     } = opts;
 
+    translateConfig.nameSpace = i18nModelNameSpace;
+
     return {
 
         extraModels: [
@@ -74,8 +65,7 @@ export default function VivyI18n(options = {}) {
          * @param vivyStore
          */
         onCreateStore: vivyStore => {
-            store = vivyStore;
-            nameSpace = i18nModelNameSpace;
+            translateConfig.store = vivyStore;
         },
 
         /**

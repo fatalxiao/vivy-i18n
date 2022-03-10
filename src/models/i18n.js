@@ -3,7 +3,8 @@
  */
 
 // Utils
-import getTranslate from '../utils/getTranslate';
+// import getTranslate from '../utils/getTranslate';
+import {translate} from '../index';
 
 /**
  * Create I18n model
@@ -86,7 +87,8 @@ export default function createI18n(
                 //
                 // return '';
 
-                return getTranslate({dispatch, getState}, nameSpace)(index);
+                // return getTranslate({dispatch, getState}, nameSpace)(index);
+                return translate(index);
 
             }
 
