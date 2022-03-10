@@ -3,9 +3,6 @@
 import Vivy from 'vivy';
 import VivyI18n, {I18n} from '../src';
 
-// Models
-import testModel from './mocks/testModel';
-
 test('Use I18n', () => {
 
     const vivy = Vivy();
