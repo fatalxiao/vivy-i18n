@@ -6,7 +6,7 @@ import VivyI18n, {translate} from '../src';
 // Models
 import testModel from './mocks/testModel';
 
-test('Use Vivy I18n', () => {
+test('Use Vivy I18n translate', () => {
 
     const vivy = Vivy();
     vivy.use(VivyI18n());
