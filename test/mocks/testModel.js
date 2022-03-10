@@ -4,16 +4,14 @@
 
 export default {
     nameSpace: 'testModel',
-    state: null,
-    reducers: {
-        update: (state, {pathname}) => {
-            return pathname;
+    i18ns: {
+        'en-US': {
+            title: 'Title',
+            text: 'Text'
+        },
+        'zh-CN': {
+            title: '标题',
+            text: '正文'
         }
-    },
-    subscriptions: [
-        ({history}) => (dispatch, getState) => history.listen(({pathname}) => dispatch({
-            type: 'testModel/update',
-            pathname
-        }))
-    ]
+    }
 };
