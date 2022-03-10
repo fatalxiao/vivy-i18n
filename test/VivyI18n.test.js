@@ -56,6 +56,23 @@ test('Use Vivy I18n translate default en text', () => {
 
 });
 
+test('Use Vivy I18n translate default en func', () => {
+
+    const vivy = Vivy();
+
+    vivy.use(VivyI18n());
+
+    const store = vivy.createStore();
+    store.registerModel(testModel);
+
+    expect(
+        translate('testModel/func')
+    ).toEqual(
+        testModel.i18ns['en-US'].func(store.getState)
+    );
+
+});
+
 test('Use Vivy I18n translate default zh title', () => {
 
     const vivy = Vivy();
@@ -90,6 +107,25 @@ test('Use Vivy I18n translate default zh text', () => {
         translate('testModel/text')
     ).toEqual(
         testModel.i18ns['zh-CN'].text
+    );
+
+});
+
+test('Use Vivy I18n translate default zh func', () => {
+
+    const vivy = Vivy();
+
+    vivy.use(VivyI18n({
+        language: 'zh-CN'
+    }));
+
+    const store = vivy.createStore();
+    store.registerModel(testModel);
+
+    expect(
+        translate('testModel/func')
+    ).toEqual(
+        testModel.i18ns['zh-CN'].func(store.getState)
     );
 
 });
