@@ -6,7 +6,7 @@ import VivyI18n, {translate} from '../src';
 // Models
 import testModel from './mocks/testModel';
 
-test('Use Vivy I18n translate', () => {
+test('Use translate', () => {
 
     const vivy = Vivy();
     vivy.use(VivyI18n());
@@ -22,7 +22,7 @@ test('Use Vivy I18n translate', () => {
 
 });
 
-test('Use Vivy I18n translate default en title', () => {
+test('Use translate default en title', () => {
 
     const vivy = Vivy();
 
@@ -39,7 +39,7 @@ test('Use Vivy I18n translate default en title', () => {
 
 });
 
-test('Use Vivy I18n translate default en text', () => {
+test('Use translate default en text', () => {
 
     const vivy = Vivy();
 
@@ -56,7 +56,7 @@ test('Use Vivy I18n translate default en text', () => {
 
 });
 
-test('Use Vivy I18n translate default en func', () => {
+test('Use translate default en func', () => {
 
     const vivy = Vivy();
 
@@ -73,7 +73,7 @@ test('Use Vivy I18n translate default en func', () => {
 
 });
 
-test('Use Vivy I18n translate default zh title', () => {
+test('Use translate default zh title', () => {
 
     const vivy = Vivy();
 
@@ -92,7 +92,7 @@ test('Use Vivy I18n translate default zh title', () => {
 
 });
 
-test('Use Vivy I18n translate default zh text', () => {
+test('Use translate default zh text', () => {
 
     const vivy = Vivy();
 
@@ -111,7 +111,7 @@ test('Use Vivy I18n translate default zh text', () => {
 
 });
 
-test('Use Vivy I18n translate default zh func', () => {
+test('Use translate default zh func', () => {
 
     const vivy = Vivy();
 
