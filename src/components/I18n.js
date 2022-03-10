@@ -5,13 +5,12 @@
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
+// Vendors
+import {translate} from '../index';
+
 const I18n = ({
-    index, i18n,
-    dispatch
-}) => dispatch({
-    type: 'i18n/translate',
     index
-});
+}) => translate(index);
 
 I18n.propTypes = {
 
@@ -20,9 +19,7 @@ I18n.propTypes = {
      */
     index: PropTypes.any,
 
-    i18n: PropTypes.object,
-
-    dispatch: PropTypes.func
+    i18n: PropTypes.object
 
 };
 

@@ -3,7 +3,6 @@
  */
 
 // Utils
-// import getTranslate from '../utils/getTranslate';
 import {translate} from '../index';
 
 /**
