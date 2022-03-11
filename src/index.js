@@ -20,8 +20,7 @@ const DEFAULT_OPTIONS = {
 
 const translateConfig = {
     store: null,
-    // nameSpace: DEFAULT_OPTIONS.i18nModelNameSpace,
-    i18nModelState: {}
+    nameSpace: DEFAULT_OPTIONS.i18nModelNameSpace
 };
 
 /**
@@ -31,13 +30,14 @@ const translateConfig = {
  */
 export function translate(index) {
 
-    if (!translateConfig?.store || !index) {
+    if (!translateConfig?.store || !translateConfig?.nameSpace || !index) {
         return '';
     }
 
-    const {store} = translateConfig;
+    const {store, nameSpace: i18nModelNameSpace} = translateConfig;
     const {dispatch, getState} = store;
-    const {language, defaultLanguage, data} = translateConfig.i18nModelState;
+    const state = getState();
+    const {language, defaultLanguage, data} = state[i18nModelNameSpace];
 
     // Parse index to nameSpace and key
     const [nameSpace, key] = index?.split('/') || [];
@@ -87,7 +87,7 @@ export default function VivyI18n(options = {}) {
         onSwitchLanguage, onSwitchDefaultLanguage
     } = opts;
 
-    // translateConfig.nameSpace = i18nModelNameSpace;
+    translateConfig.nameSpace = i18nModelNameSpace;
 
     return {
 
@@ -100,11 +100,10 @@ export default function VivyI18n(options = {}) {
 
         /**
          * Record vivyStore and i18nModelNameSpace when store created
-         * @param store
+         * @param vivyStore
          */
-        onCreateStore: store => {
-            translateConfig.store = store;
-            translateConfig.i18nModelState = store.getState()[i18nModelNameSpace];
+        onCreateStore: vivyStore => {
+            translateConfig.store = vivyStore;
         },
 
         /**
@@ -129,8 +128,6 @@ export default function VivyI18n(options = {}) {
                 });
             }
 
-            translateConfig.i18nModelState = store.getState()[i18nModelNameSpace];
-
         },
 
         /**
@@ -151,8 +148,6 @@ export default function VivyI18n(options = {}) {
                 type: `${i18nModelNameSpace}/unregister`,
                 nameSpace
             });
-
-            translateConfig.i18nModelState = store.getState()[i18nModelNameSpace];
 
         }
 
