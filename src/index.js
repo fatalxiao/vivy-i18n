@@ -18,6 +18,10 @@ const DEFAULT_OPTIONS = {
     defaultLanguage: 'en-US'
 };
 
+/**
+ * Translate method config
+ * @type {{store: null, nameSpace: string}}
+ */
 const translateConfig = {
     store: null,
     nameSpace: DEFAULT_OPTIONS.i18nModelNameSpace
