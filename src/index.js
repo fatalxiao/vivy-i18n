@@ -34,7 +34,7 @@ const translateConfig = {
  */
 export function translate(index) {
 
-    if (!translateConfig?.store || !translateConfig?.nameSpace || !index) {
+    if (!translateConfig.store || !translateConfig.nameSpace || !index) {
         return '';
     }
 
