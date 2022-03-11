@@ -17,12 +17,10 @@ I18n.propTypes = {
     /**
      * format: '{MODEL_NAMESPACE}/{I18N_KEY}'
      */
-    index: PropTypes.any,
-
-    i18n: PropTypes.object
+    index: PropTypes.any
 
 };
 
 export default connect(state => ({
-    i18n: state.i18n
+    state
 }))(I18n);
