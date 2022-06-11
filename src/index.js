@@ -30,9 +30,10 @@ const translateConfig = {
 /**
  * Translate i18ns data by index
  * @param index
+ * @param restArgs
  * @returns {*}
  */
-export function translate(index) {
+export function translate(index, restArgs) {
 
     if (!translateConfig.store || !translateConfig.nameSpace || !index) {
         return '';
@@ -54,7 +55,7 @@ export function translate(index) {
 
     // Pass state to functional message
     if (typeof currentLanguageMessage === 'function') {
-        return currentLanguageMessage(getState, dispatch);
+        return currentLanguageMessage(getState, dispatch, restArgs);
     }
 
     if (currentLanguageMessage) {
@@ -66,7 +67,7 @@ export function translate(index) {
 
     // Pass state to functional message
     if (typeof defaultLanguageMessage === 'function') {
-        return defaultLanguageMessage(getState, dispatch);
+        return defaultLanguageMessage(getState, dispatch, restArgs);
     }
 
     if (defaultLanguageMessage) {

@@ -9,8 +9,9 @@ import {connect} from 'react-redux';
 import {translate} from '../index';
 
 const I18n = ({
-    index
-}) => translate(index);
+    index,
+    ...restProps
+}) => translate(index, restProps);
 
 I18n.propTypes = {
 

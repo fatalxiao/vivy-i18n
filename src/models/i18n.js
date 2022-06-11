@@ -43,9 +43,10 @@ export default function createI18n(
             /**
              * Translate index
              * @param index
+             * @param restArgs
              * @returns {function(): *}
              */
-            translate: ({index}) => () => translate(index)
+            translate: ({index, ...restArgs}) => () => translate(index, restArgs)
 
         },
         reducers: {
