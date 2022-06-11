@@ -129,3 +129,47 @@ test('Use translate default zh func', () => {
     );
 
 });
+
+test('With extra args en-US', () => {
+
+    const vivy = Vivy();
+
+    vivy.use(VivyI18n());
+
+    const store = vivy.createStore();
+    store.registerModel(testModel);
+
+    const args = {
+        name: translate('testModel/title')
+    };
+
+    expect(
+        translate('testModel/withArgs', args)
+    ).toEqual(
+        testModel.i18ns['en-US'].withArgs(store.getState, store.dispatch, args)
+    );
+
+});
+
+test('With extra args zh-CN', () => {
+
+    const vivy = Vivy();
+
+    vivy.use(VivyI18n({
+        language: 'zh-CN'
+    }));
+
+    const store = vivy.createStore();
+    store.registerModel(testModel);
+
+    const args = {
+        name: translate('testModel/title')
+    };
+
+    expect(
+        translate('testModel/withArgs', args)
+    ).toEqual(
+        testModel.i18ns['zh-CN'].withArgs(store.getState, store.dispatch, args)
+    );
+
+});
