@@ -33,7 +33,7 @@ const translateConfig = {
  * @param restArgs
  * @returns {*}
  */
-export function translate(index, restArgs) {
+export function translate(index, restArgs = {}) {
 
     if (!translateConfig.store || !translateConfig.nameSpace || !index) {
         return '';
@@ -55,7 +55,7 @@ export function translate(index, restArgs) {
 
     // Pass state to functional message
     if (typeof currentLanguageMessage === 'function') {
-        return currentLanguageMessage(getState, dispatch, restArgs);
+        return currentLanguageMessage(getState, dispatch, restArgs || {});
     }
 
     if (currentLanguageMessage) {
@@ -67,7 +67,7 @@ export function translate(index, restArgs) {
 
     // Pass state to functional message
     if (typeof defaultLanguageMessage === 'function') {
-        return defaultLanguageMessage(getState, dispatch, restArgs);
+        return defaultLanguageMessage(getState, dispatch, restArgs || {});
     }
 
     if (defaultLanguageMessage) {
