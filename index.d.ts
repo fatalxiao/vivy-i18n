@@ -40,7 +40,7 @@ export interface VivyI18nPluginOption {
 /**
  * Translate i18ns data by index
  */
-export function translate(index: string): any;
+export function translate(index: string, restArgs: any): any;
 
 /**
  * Create Vivy I18n plugin instance
