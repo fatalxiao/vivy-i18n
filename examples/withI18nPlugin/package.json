@@ -9,14 +9,14 @@
     "dependencies": {
         "axios": "^0.27.2",
         "prop-types": "^15.8.1",
-        "react": "^18.1.0",
-        "react-dom": "^18.1.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
         "react-redux": "^8.0.2",
         "vivy": "^2.0.6",
-        "vivy-i18n": "^2.2.1"
+        "vivy-i18n": "^2.2.2"
     },
     "devDependencies": {
-        "@babel/core": "^7.18.2",
+        "@babel/core": "^7.18.5",
         "@babel/plugin-proposal-class-properties": "^7.17.12",
         "@babel/plugin-proposal-decorators": "^7.18.2",
         "@babel/plugin-proposal-do-expressions": "^7.16.7",
@@ -34,7 +34,7 @@
         "@babel/plugin-syntax-dynamic-import": "^7.8.3",
         "@babel/plugin-syntax-export-default-from": "^7.16.7",
         "@babel/plugin-syntax-import-meta": "^7.10.4",
-        "@babel/plugin-transform-runtime": "^7.18.2",
+        "@babel/plugin-transform-runtime": "^7.18.5",
         "@babel/preset-env": "^7.18.2",
         "@babel/preset-react": "^7.17.12",
         "@babel/runtime": "^7.18.3",
@@ -50,7 +50,7 @@
         "style-loader": "^3.3.1",
         "url-loader": "^4.1.1",
         "webpack": "^5.73.0",
-        "webpack-cli": "^4.9.2",
+        "webpack-cli": "^4.10.0",
         "webpack-dev-server": "^4.9.2",
         "webpack-merge": "^5.8.0"
     }
