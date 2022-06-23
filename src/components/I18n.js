@@ -9,8 +9,14 @@ import {connect} from 'react-redux';
 import {translate} from '../index';
 
 const I18n = ({
+
     index,
+
+    // not passing down these props
+    state, dispatch,
+
     ...restProps
+
 }) => translate(index, restProps);
 
 I18n.propTypes = {
