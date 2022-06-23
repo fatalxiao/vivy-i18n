@@ -13,7 +13,7 @@
         "react-dom": "^18.2.0",
         "react-redux": "^8.0.2",
         "vivy": "^2.0.6",
-        "vivy-i18n": "^2.2.3"
+        "vivy-i18n": "^2.2.4"
     },
     "devDependencies": {
         "@babel/core": "^7.18.5",
@@ -45,7 +45,7 @@
         "postcss": "^8.4.14",
         "postcss-loader": "^7.0.0",
         "postcss-preset-env": "^7.7.1",
-        "sass": "^1.52.3",
+        "sass": "^1.53.0",
         "sass-loader": "^13.0.0",
         "style-loader": "^3.3.1",
         "url-loader": "^4.1.1",
