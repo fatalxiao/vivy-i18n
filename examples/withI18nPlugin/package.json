@@ -13,7 +13,7 @@
         "react-dom": "^18.2.0",
         "react-redux": "^8.0.2",
         "vivy": "^2.1.0",
-        "vivy-i18n": "^2.3.0"
+        "vivy-i18n": "^2.3.1"
     },
     "devDependencies": {
         "@babel/core": "^7.18.6",
