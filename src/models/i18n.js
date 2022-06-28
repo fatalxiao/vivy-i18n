@@ -15,11 +15,11 @@ import {translate} from '../index';
  * @returns {Object}
  */
 export default function createI18n(
-    nameSpace, language = 'en-US', defaultLanguage = 'en-US',
+    nameSpace, language, defaultLanguage,
     onSwitchLanguage, onSwitchDefaultLanguage
 ) {
     return {
-        nameSpace: nameSpace || 'i18n',
+        nameSpace: nameSpace,
         state: {
 
             /**

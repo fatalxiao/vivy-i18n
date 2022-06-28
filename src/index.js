@@ -58,11 +58,10 @@ export function translate(index, restArgs = {}) {
     const currentLanguageMessage = i18ns?.[language]?.[key];
 
     // Pass state to functional message
-    if (typeof currentLanguageMessage === 'function') {
-        return currentLanguageMessage(getState, dispatch, restArgs || {});
-    }
-
     if (currentLanguageMessage) {
+        if (typeof currentLanguageMessage === 'function') {
+            return currentLanguageMessage(getState, dispatch, restArgs || {});
+        }
         return currentLanguageMessage;
     }
 
@@ -70,11 +69,10 @@ export function translate(index, restArgs = {}) {
     const defaultLanguageMessage = i18ns?.[defaultLanguage]?.[key];
 
     // Pass state to functional message
-    if (typeof defaultLanguageMessage === 'function') {
-        return defaultLanguageMessage(getState, dispatch, restArgs || {});
-    }
-
     if (defaultLanguageMessage) {
+        if (typeof defaultLanguageMessage === 'function') {
+            return defaultLanguageMessage(getState, dispatch, restArgs || {});
+        }
         return defaultLanguageMessage;
     }
 
