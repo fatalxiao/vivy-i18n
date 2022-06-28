@@ -13,9 +13,13 @@ export I18n from './components/I18n';
  * @type {Object}
  */
 const DEFAULT_OPTIONS = {
+
     i18nModelNameSpace: 'i18n',
-    language: 'en-US',
+
     defaultLanguage: 'en-US'
+
+    // language: 'en-US'
+
 };
 
 /**
