@@ -3,7 +3,7 @@
  */
 
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import {connect} from 'react-vivy';
 
 // Vendors
 import {translate} from '../index';
