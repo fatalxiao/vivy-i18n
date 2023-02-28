@@ -4,6 +4,6 @@
         "prop-types",
         "react",
         "react-dom",
-        "react-redux"
+        "react-vivy"
     ]
 }
