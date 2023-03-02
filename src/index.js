@@ -9,7 +9,7 @@ import createI18n from './models/i18n';
 export I18n from './components/I18n';
 
 // Hooks
-import {useStore} from 'react-vivy';
+import {useSelector, useDispatch, useStore} from 'react-vivy';
 
 /**
  * Default vivy-i18n options
@@ -95,8 +95,9 @@ export function useI18n(index, restArgs = {}) {
     }
 
     const {nameSpace: i18nModelNameSpace} = translateConfig;
-    const {dispatch, getState} = useStore();
-    const state = getState();
+    const state = useSelector(state => state);
+    const dispatch = useDispatch();
+    const {getState} = useStore();
     const {language, defaultLanguage, data} = state[i18nModelNameSpace];
 
     // Parse index to nameSpace and key
