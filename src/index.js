@@ -88,7 +88,7 @@ export function translate(index, restArgs = {}) {
  * Translate i18ns data by index
  * @type {(function(*, {}=): *)|*}
  */
-export function useI18n(index, restArgs = {}) {
+export function useTranslate(index, restArgs = {}) {
 
     if (!index) {
         return '';

@@ -50,7 +50,7 @@ export function translate(index: string, restArgs: any): any;
 /**
  * A hook to translate i18ns data by index
  */
-export function useI18n(index: string, restArgs: any): any;
+export function useTranslate(index: string, restArgs: any): any;
 
 /**
  * Create Vivy I18n plugin instance
