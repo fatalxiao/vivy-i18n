@@ -4,9 +4,7 @@
 
 import React from 'react';
 import {useModel} from 'react-vivy';
-
-// Components
-import {I18n} from 'vivy-i18n';
+import {I18n, useI18n} from 'vivy-i18n';
 
 const Form = () => {
 
@@ -19,7 +17,8 @@ const Form = () => {
         <form>
 
             <div>
-                <I18n index="form/username"/>
+                {/** Get i18n data by hook "useI18n" */}
+                {useI18n('form/username')}
                 <input value={username}
                        onChange={e => updateUserName?.({
                            username: e.target.value
@@ -28,6 +27,7 @@ const Form = () => {
             </div>
 
             <div>
+                {/** Get i18n data by component <I18n/> */}
                 <I18n index="form/password"/>
                 <input value={password}
                        onChange={e => updatePassword?.({
