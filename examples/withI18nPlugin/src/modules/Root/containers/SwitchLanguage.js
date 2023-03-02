@@ -13,13 +13,7 @@ const SwitchLanguage = () => {
     const [{language}, {switchLanguage}] = useModel('i18n');
 
     return (
-        <select style={{
-            width: 80,
-            height: 40,
-            background: 'transparent',
-            border: 'none'
-        }}
-                value={language}
+        <select value={language}
                 onChange={e => switchLanguage?.({
                     language: e.target.value
                 })}>
