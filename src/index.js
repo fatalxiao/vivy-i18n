@@ -9,7 +9,7 @@ import createI18n from './models/i18n';
 export I18n from './components/I18n';
 
 // Hooks
-import {useSelector, useDispatch, useStore} from 'react-vivy';
+import {useSelector, useDispatch, useStore, useModel} from 'react-vivy';
 
 /**
  * Default vivy-i18n options
@@ -130,6 +130,14 @@ export function useTranslate(index, restArgs = {}) {
 
     return '';
 
+}
+
+/**
+ * A hook to access the state, actions and reducers from i18n model.
+ * @returns {[]}
+ */
+export function useI18n() {
+    return useModel(translateConfig.nameSpace);
 }
 
 /**

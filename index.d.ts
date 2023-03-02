@@ -37,6 +37,29 @@ export interface VivyI18nPluginOption {
 
 }
 
+export interface VivyI18nModelState {
+    language?: string,
+    defaultLanguage?: string,
+}
+
+export interface translateAction {
+    index?: string
+}
+
+export interface switchLanguageAction {
+    language?: string
+}
+
+export interface switchDefaultLanguageAction {
+    defaultLanguage?: string
+}
+
+export interface VivyI18nModelActions {
+    translate?: (translateAction) => any,
+    switchLanguage?: (switchLanguageAction) => any,
+    switchDefaultLanguage?: (switchDefaultLanguageAction) => any
+}
+
 /**
  * Translate i18ns data by index
  */
@@ -51,6 +74,11 @@ export function translate(index: string, restArgs: any): any;
  * A hook to translate i18ns data by index
  */
 export function useTranslate(index: string, restArgs: any): any;
+
+/**
+ * A hook to access the state, actions and reducers from i18n model
+ */
+export function useI18n(): [VivyI18nModelState, VivyI18nModelActions];
 
 /**
  * Create Vivy I18n plugin instance
