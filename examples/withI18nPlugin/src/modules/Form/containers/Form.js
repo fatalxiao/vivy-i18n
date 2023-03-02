@@ -2,42 +2,18 @@
  * @file Form.js
  */
 
-import React, {useCallback} from 'react';
-import PropTypes from 'prop-types';
-import {connect} from 'react-vivy';
-import {bindModelActionCreators} from 'vivy';
+import React from 'react';
+import {useModel} from 'react-vivy';
 
 // Components
 import {I18n} from 'vivy-i18n';
 
-const Form = ({
-    username, password,
-    updateUserName, updatePassword, login
-}) => {
+const Form = () => {
 
     /**
-     * Update username to state when changed
-     * @type {(function(*): void)|*}
+     * Get state and reducer from model using hook "useModel".
      */
-    const handleUserNameChange = useCallback(e => {
-        updateUserName?.({
-            username: e.target.value
-        });
-    }, [
-        updateUserName
-    ]);
-
-    /**
-     * Update password to state when changed
-     * @type {(function(*): void)|*}
-     */
-    const handlePasswordChange = useCallback(e => {
-        updatePassword?.({
-            password: e.target.value
-        });
-    }, [
-        updatePassword
-    ]);
+    const [{username, password}, {updateUserName, updatePassword, login}] = useModel('form');
 
     return (
         <form style={{
@@ -59,7 +35,9 @@ const Form = ({
                     borderRadius: 4
                 }}
                        value={username}
-                       onChange={handleUserNameChange}
+                       onChange={e => updateUserName?.({
+                           username: e.target.value
+                       })}
                        placeholder="admin"/>
             </label>
 
@@ -78,7 +56,9 @@ const Form = ({
                     borderRadius: 4
                 }}
                        value={password}
-                       onChange={handlePasswordChange}
+                       onChange={e => updatePassword?.({
+                           password: e.target.value
+                       })}
                        placeholder="admin"/>
             </label>
 
@@ -115,22 +95,4 @@ const Form = ({
 
 };
 
-Form.propTypes = {
-
-    username: PropTypes.string,
-    password: PropTypes.string,
-
-    updateUserName: PropTypes.func,
-    updatePassword: PropTypes.func,
-    login: PropTypes.func
-
-};
-
-export default connect(state => ({
-    username: state.form.username,
-    password: state.form.password
-}), dispatch => bindModelActionCreators({
-    updateUserName: 'form/updateUserName',
-    updatePassword: 'form/updatePassword',
-    login: 'form/login'
-}, dispatch))(Form);
+export default Form;

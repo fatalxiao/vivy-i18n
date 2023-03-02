@@ -2,27 +2,15 @@
  * @file SwitchLanguage.js
  */
 
-import React, {useCallback} from 'react';
-import PropTypes from 'prop-types';
-import {connect} from 'react-vivy';
-import {bindModelActionCreators} from 'vivy';
+import React from 'react';
+import {useModel} from 'react-vivy';
 
-const SwitchLanguage = ({
-    language,
-    switchLanguage
-}) => {
+const SwitchLanguage = () => {
 
     /**
-     * Update language to I18n plugin when changed
-     * @type {(function(*): void)|*}
+     * Get state and reducer from model using hook "useModel".
      */
-    const handleChange = useCallback(e => {
-        switchLanguage?.({
-            language: e.target.value
-        });
-    }, [
-        switchLanguage
-    ]);
+    const [{language}, {switchLanguage}] = useModel('i18n');
 
     return (
         <select style={{
@@ -32,7 +20,9 @@ const SwitchLanguage = ({
             border: 'none'
         }}
                 value={language}
-                onChange={handleChange}>
+                onChange={e => switchLanguage?.({
+                    language: e.target.value
+                })}>
             <option value="en-US">
                 en-US
             </option>
@@ -44,16 +34,4 @@ const SwitchLanguage = ({
 
 };
 
-SwitchLanguage.propTypes = {
-
-    language: PropTypes.string,
-
-    switchLanguage: PropTypes.func
-
-};
-
-export default connect(state => ({
-    language: state.i18n.language
-}), dispatch => bindModelActionCreators({
-    switchLanguage: 'i18n/switchLanguage'
-}, dispatch))(SwitchLanguage);
+export default SwitchLanguage;
