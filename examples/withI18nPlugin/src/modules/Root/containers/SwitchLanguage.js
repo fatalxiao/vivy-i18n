@@ -3,14 +3,14 @@
  */
 
 import React from 'react';
-import {useModel} from 'react-vivy';
+import {useI18n} from 'vivy-i18n';
 
 const SwitchLanguage = () => {
 
     /**
-     * Get state and reducer from model using hook "useModel".
+     * Get state and reducer from i18n model using hook "useI18n".
      */
-    const [{language}, {switchLanguage}] = useModel('i18n');
+    const [{language}, {switchLanguage}] = useI18n();
 
     return (
         <select value={language}
