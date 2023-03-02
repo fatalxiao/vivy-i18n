@@ -38,40 +38,82 @@ export interface VivyI18nPluginOption {
 }
 
 export interface VivyI18nModelState {
+
+    /**
+     * Current language
+     */
     language?: string,
-    defaultLanguage?: string,
+
+    /**
+     * Default language
+     */
+    defaultLanguage?: string
+
 }
 
 export interface translateAction {
+
+    /**
+     * I18n index, format: 'model_name_space/i18n_key'
+     */
     index?: string
+
 }
 
 export interface switchLanguageAction {
+
+    /**
+     * Target language
+     */
     language?: string
+
 }
 
 export interface switchDefaultLanguageAction {
+
+    /**
+     * Target default language
+     */
     defaultLanguage?: string
+
 }
 
 export interface VivyI18nModelActions {
+
+    /**
+     * Translate i18ns data by index
+     */
     translate?: (translateAction) => any,
+
+    /**
+     * Switch current language
+     */
     switchLanguage?: (switchLanguageAction) => any,
+
+    /**
+     * Switch default language
+     */
     switchDefaultLanguage?: (switchDefaultLanguageAction) => any
+
 }
 
 /**
  * Translate i18ns data by index
+ * @param index I18n index, format: 'model_name_space/i18n_key'
  */
 export function translate(index: string): any;
 
 /**
  * Translate i18ns data by index
+ * @param index I18n index, format: 'model_name_space/i18n_key'
+ * @param restArgs
  */
 export function translate(index: string, restArgs: any): any;
 
 /**
  * A hook to translate i18ns data by index
+ * @param index I18n index, format: 'model_name_space/i18n_key'
+ * @param restArgs
  */
 export function useTranslate(index: string, restArgs: any): any;
 
