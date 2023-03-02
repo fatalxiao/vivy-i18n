@@ -9,13 +9,22 @@ import {I18n} from 'vivy-i18n';
 import SwitchLanguage from './SwitchLanguage';
 import Form from '../../Form/containers/Form';
 
-// Styles
-import './Root.scss';
-
 const Root = () => (
-    <div className="root">
+    <div style={{
+        boxSizing: 'border-box',
+        width: '100%',
+        maxWidth: 640,
+        padding: 16,
+        background: '#f8f8f8',
+        borderRadius: 24
+    }}>
 
-        <div className="header">
+        <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            padding: '0 16px'
+        }}>
 
             <h1>
                 {

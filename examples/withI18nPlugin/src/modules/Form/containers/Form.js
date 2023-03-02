@@ -10,9 +10,6 @@ import {bindModelActionCreators} from 'vivy';
 // Components
 import {I18n} from 'vivy-i18n';
 
-// Styles
-import './Form.scss';
-
 const Form = ({
     username, password,
     updateUserName, updatePassword, login
@@ -43,32 +40,72 @@ const Form = ({
     ]);
 
     return (
-        <form className="form">
+        <form style={{
+            padding: 16
+        }}>
 
-            <label>
+            <label style={{
+                display: 'block',
+                marginTop: 16
+            }}>
                 <I18n index="form/username"/>
-                <input value={username}
+                <input style={{
+                    boxSizing: 'border-box',
+                    display: 'block',
+                    width: 160,
+                    height: 32,
+                    padding: '0 8px',
+                    border: '1px solid #ddd',
+                    borderRadius: 4
+                }}
+                       value={username}
                        onChange={handleUserNameChange}
                        placeholder="admin"/>
             </label>
 
-            <label>
+            <label style={{
+                display: 'block',
+                marginTop: 16
+            }}>
                 <I18n index="form/password"/>
-                <input value={password}
+                <input style={{
+                    boxSizing: 'border-box',
+                    display: 'block',
+                    width: 160,
+                    height: 32,
+                    padding: '0 8px',
+                    border: '1px solid #ddd',
+                    borderRadius: 4
+                }}
+                       value={password}
                        onChange={handlePasswordChange}
                        placeholder="admin"/>
             </label>
 
             {
-                password && password?.length < 5 ?
-                    <div className="password-error">
+                password && password?.length < 5 && (
+                    <div style={{
+                        display: 'inline-block',
+                        padding: 8,
+                        marginTop: 8,
+                        background: '#fdd',
+                        border: '1px solid #f55',
+                        borderRadius: 8,
+                        color: '#f55',
+                        fontSize: 12
+                    }}>
                         <I18n index="form/passwordErrorMsg"/>
                     </div>
-                    :
-                    null
+                )
             }
 
-            <button type="button"
+            <button style={{
+                display: 'block',
+                marginTop: 32,
+                width: 80,
+                height: 32
+            }}
+                    type="button"
                     onClick={login}>
                 <I18n index="form/login"/>
             </button>

@@ -7,8 +7,6 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-vivy';
 import {bindModelActionCreators} from 'vivy';
 
-import './SwitchLanguage.scss';
-
 const SwitchLanguage = ({
     language,
     switchLanguage
@@ -27,7 +25,12 @@ const SwitchLanguage = ({
     ]);
 
     return (
-        <select className="switch-language"
+        <select style={{
+            width: 80,
+            height: 40,
+            background: 'transparent',
+            border: 'none'
+        }}
                 value={language}
                 onChange={handleChange}>
             <option value="en-US">
