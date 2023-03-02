@@ -4,7 +4,7 @@
 
 import React from 'react';
 import {useModel} from 'react-vivy';
-import {I18n, useI18n} from 'vivy-i18n';
+import {I18n, useTranslate} from 'vivy-i18n';
 
 const Form = () => {
 
@@ -17,8 +17,8 @@ const Form = () => {
         <form>
 
             <div>
-                {/** Get i18n data by hook "useI18n" */}
-                {useI18n('form/username')}
+                {/** Get i18n data by hook "useTranslate" */}
+                {useTranslate('form/username')}
                 <input value={username}
                        onChange={e => updateUserName?.({
                            username: e.target.value
