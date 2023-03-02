@@ -12,6 +12,8 @@ const SwitchLanguage = () => {
      */
     const [{language}, {switchLanguage}] = useI18n();
 
+    console.log('language::', language);
+
     return (
         <select value={language}
                 onChange={e => switchLanguage?.({
