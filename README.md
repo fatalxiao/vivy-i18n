@@ -29,6 +29,11 @@ A [Vivy][vivy-url] plugin which extend Vivy model to implement i18n.
     * [Complete and real project example](#complete-and-real-project-example)
 * [Documentation](#documentation)
     * [Basic usage](#basic-usage)
+    * [translate](#translate)
+    * [I18n](#I18n)
+    * [Hooks](#hooks)
+        * [useI18n](#useI18n)
+        * [useTranslate](#useTranslate)
 
 ## Installation
 
@@ -131,15 +136,29 @@ export default {
 
 You can find detail usage in [form.js][with-i18n-plugin-example-form-url].
 
-### Hooks
+### `translate`
 
-#### `useTranslate`
+Get the i18n value in the right language. You can use it everywhere, but it won't change when language state changed.
 
 ```js
-import {useTranslate} from 'vivy-i18n';
+import {translate} from 'vivy-i18n';
 
-useTranslate('model_name_space/i18n_key');
+const i18nValue = useTranslate('model_name_space/i18n_key');
 ```
+
+### `I18n`
+
+Get the i18n value in the right language. You can use it in React components.
+
+```js
+import {I18n} from 'vivy-i18n';
+
+const App = () => (
+    <I18n index="app/title"/>
+);
+```
+
+### Hooks
 
 #### `useI18n`
 
@@ -147,4 +166,12 @@ useTranslate('model_name_space/i18n_key');
 import {useI18n} from 'vivy-i18n';
 
 const [{language, defaultLanguage}, {translate, switchLanguage, switchDefaultLanguage}] = useI18n();
+```
+
+#### `useTranslate`
+
+```js
+import {useTranslate} from 'vivy-i18n';
+
+const i18nValue = useTranslate('model_name_space/i18n_key');
 ```
