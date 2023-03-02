@@ -8,6 +8,9 @@ import createI18n from './models/i18n';
 // Components
 export I18n from './components/I18n';
 
+// Hooks
+import {useStore} from 'react-vivy';
+
 /**
  * Default vivy-i18n options
  * @type {Object}
@@ -45,6 +48,54 @@ export function translate(index, restArgs = {}) {
 
     const {store, nameSpace: i18nModelNameSpace} = translateConfig;
     const {dispatch, getState} = store;
+    const state = getState();
+    const {language, defaultLanguage, data} = state[i18nModelNameSpace];
+
+    // Parse index to nameSpace and key
+    const [nameSpace, key] = index?.split('/') || [];
+
+    // Get I18n config in data
+    const i18ns = data[nameSpace];
+
+    // Get current language message from I18n config
+    const currentLanguageMessage = i18ns?.[language]?.[key];
+
+    // Pass state to functional message
+    if (currentLanguageMessage) {
+        if (typeof currentLanguageMessage === 'function') {
+            return currentLanguageMessage(getState, dispatch, restArgs || {});
+        }
+        return currentLanguageMessage;
+    }
+
+    // Get default language message from I18n config
+    const defaultLanguageMessage = i18ns?.[defaultLanguage]?.[key];
+
+    // Pass state to functional message
+    if (defaultLanguageMessage) {
+        if (typeof defaultLanguageMessage === 'function') {
+            return defaultLanguageMessage(getState, dispatch, restArgs || {});
+        }
+        return defaultLanguageMessage;
+    }
+
+    return '';
+
+}
+
+/**
+ * A hook to translate i18ns data by index.
+ * Translate i18ns data by index
+ * @type {(function(*, {}=): *)|*}
+ */
+export function useI18n(index, restArgs = {}) {
+
+    if (!index) {
+        return '';
+    }
+
+    const {nameSpace: i18nModelNameSpace} = translateConfig;
+    const {dispatch, getState} = useStore();
     const state = getState();
     const {language, defaultLanguage, data} = state[i18nModelNameSpace];
 
