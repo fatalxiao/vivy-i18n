@@ -130,3 +130,21 @@ export default {
 ```
 
 You can find detail usage in [form.js][with-i18n-plugin-example-form-url].
+
+### Hooks
+
+#### `useTranslate`
+
+```js
+import {useTranslate} from 'vivy-i18n';
+
+useTranslate('model_name_space/i18n_key');
+```
+
+#### `useI18n`
+
+```js
+import {useI18n} from 'vivy-i18n';
+
+const [{language, defaultLanguage}, {translate, switchLanguage, switchDefaultLanguage}] = useI18n();
+```
