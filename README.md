@@ -10,7 +10,7 @@
 
 [with-i18n-plugin-example-url]: https://github.com/fatalxiao/vivy-i18n/tree/main/examples/withI18nPlugin
 
-[pieb-with-dpe-frontend-url]: https://github.com/fatalxiao/pieb-with-dpe-frontend
+[labor-analgesia-frontend-url]: https://github.com/fatalxiao/labor-analgesia-frontend
 
 [with-i18n-plugin-example-form-url]: https://github.com/fatalxiao/vivy-i18n/blob/main/examples/withI18nPlugin/src/modules/Form/models/form.js
 
@@ -58,7 +58,7 @@ $ npm run start
 
 ### Complete and real project example
 
-* [pieb-with-dpe-frontend][pieb-with-dpe-frontend-url]
+* [labor-analgesia-frontend][labor-analgesia-frontend-url]
 
 ## Documentation
 
