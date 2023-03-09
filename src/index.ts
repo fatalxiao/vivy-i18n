@@ -1,5 +1,6 @@
 /**
- * @file index.js
+ * @file index.ts
+ * @author Liangxiaojun
  */
 
 // Models

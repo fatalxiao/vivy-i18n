@@ -1,5 +1,6 @@
 /**
  * @file I18n.ts
+ * @author Liangxiaojun
  */
 
 import PropTypes from 'prop-types';
@@ -8,9 +9,8 @@ import {useStoreState} from 'react-vivy';
 // Vendors
 import {translate} from '../index';
 
-export type I18nProps = {
-    index: string
-}
+// Types
+import {I18nProps} from '../types';
 
 export const I18n = ({index, ...restProps}: I18nProps) => {
     useStoreState();
