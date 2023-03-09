@@ -1,7 +1,7 @@
 {
     "name": "vivy-i18n",
     "author": "liangxiaojun",
-    "version": "3.0.0-alpha.0",
+    "version": "3.0.0-alpha.1",
     "description": "A Vivy Plugin to handle i18ns in Vivy model to implement i18n.",
     "main": "./esm/index.js",
     "files": [
