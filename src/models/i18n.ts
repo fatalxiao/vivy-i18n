@@ -1,22 +1,42 @@
 /**
- * @file i18n.js
+ * @file i18n.ts
  */
 
 // Utils
 import {translate} from '../index';
 
+export interface TranslateParams {
+    index: string;
+}
+
+export interface SwitchLanguageAction {
+    language: string;
+}
+
+export interface SwitchDefaultLanguageAction {
+    defaultLanguage: string;
+}
+
+export interface RegisterAction {
+    nameSpace: string;
+    i18ns: object;
+}
+
+export interface UnregisterAction {
+    nameSpace: string;
+}
+
 /**
  * Create I18n model
- * @param nameSpace {string}
- * @param language {string}
- * @param defaultLanguage {string}
- * @param onSwitchLanguage {Function}
- * @param onSwitchDefaultLanguage {Function}
- * @returns {Object}
+ * @param nameSpace
+ * @param language
+ * @param defaultLanguage
+ * @param onSwitchLanguage
+ * @param onSwitchDefaultLanguage
  */
 export default function createI18n(
-    nameSpace, language, defaultLanguage,
-    onSwitchLanguage, onSwitchDefaultLanguage
+    nameSpace?: string, language?: string, defaultLanguage?: string,
+    onSwitchLanguage?: (language: string) => void, onSwitchDefaultLanguage?: (language: string) => void
 ) {
     return {
         nameSpace: nameSpace,
@@ -44,9 +64,8 @@ export default function createI18n(
              * Translate index
              * @param index
              * @param restArgs
-             * @returns {function(): *}
              */
-            translate: ({index, ...restArgs}) => () => translate(index, restArgs)
+            translate: ({index, ...restArgs}: TranslateParams) => () => translate(index, restArgs)
 
         },
         reducers: {
@@ -55,9 +74,8 @@ export default function createI18n(
              * Switch current language
              * @param state
              * @param language
-             * @returns {*&{language: (string|*)}}
              */
-            switchLanguage: (state, {language}) => {
+            switchLanguage: (state: any, {language}: SwitchLanguageAction) => {
                 onSwitchLanguage?.(language);
                 return {
                     ...state,
@@ -69,9 +87,8 @@ export default function createI18n(
              * Switch default language
              * @param state
              * @param language
-             * @returns {*&{language: (string|*)}}
              */
-            switchDefaultLanguage: (state, {defaultLanguage}) => {
+            switchDefaultLanguage: (state: any, {defaultLanguage}: SwitchDefaultLanguageAction) => {
                 onSwitchDefaultLanguage?.(defaultLanguage);
                 return {
                     ...state,
@@ -81,12 +98,11 @@ export default function createI18n(
 
             /**
              * Register I18ns
-             * @param state {Object}
-             * @param nameSpace {string}
-             * @param i18ns {Object}
-             * @returns {Object}
+             * @param state
+             * @param nameSpace
+             * @param i18ns
              */
-            register: (state, {nameSpace, i18ns}) => {
+            register: (state: any, {nameSpace, i18ns}: RegisterAction) => {
                 return {
                     ...state,
                     data: {
@@ -98,11 +114,10 @@ export default function createI18n(
 
             /**
              * Unregister I18ns
-             * @param state {Object}
-             * @param nameSpace {string}
-             * @returns {Object}
+             * @param state
+             * @param nameSpace
              */
-            unregister: (state, {nameSpace}) => {
+            unregister: (state: any, {nameSpace}: UnregisterAction) => {
 
                 const data = {...state.data};
                 delete data[nameSpace];

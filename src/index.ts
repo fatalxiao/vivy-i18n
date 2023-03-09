@@ -5,42 +5,43 @@
 // Models
 import createI18n from './models/i18n';
 
-// Components
-export I18n from './components/I18n';
-
 // Hooks
-import {useSelector, useDispatch, useStore, useModel} from 'react-vivy';
+import {useDispatch, useStore, useModel, useStoreState} from 'react-vivy';
+
+// Types
+import {VivyI18nPluginOption} from './types';
+import {VivyModel, VivyStore} from 'vivy';
 
 /**
  * Default vivy-i18n options
- * @type {Object}
  */
-const DEFAULT_OPTIONS = {
-
+const DEFAULT_OPTIONS: VivyI18nPluginOption = {
     i18nModelNameSpace: 'i18n',
-
     defaultLanguage: 'en-US'
-
-    // language: 'en-US'
-
 };
+
+type TranslateConfig = {
+    store?: VivyStore,
+    nameSpace?: string
+}
 
 /**
  * Translate method config
- * @type {{store: null, nameSpace: string}}
  */
-const translateConfig = {
-    store: null,
+const translateConfig: TranslateConfig = {
+    store: undefined,
     nameSpace: DEFAULT_OPTIONS.i18nModelNameSpace
 };
+
+export * from './types';
+export {I18n} from './components/I18n';
 
 /**
  * Translate i18ns data by index
  * @param index
  * @param restArgs
- * @returns {*}
  */
-export function translate(index, restArgs = {}) {
+export function translate(index: string, restArgs = {}) {
 
     if (!translateConfig.store || !translateConfig.nameSpace || !index) {
         return '';
@@ -86,19 +87,18 @@ export function translate(index, restArgs = {}) {
 /**
  * A hook to translate i18ns data by index.
  * Translate i18ns data by index
- * @type {(function(*, {}=): *)|*}
  */
-export function useTranslate(index, restArgs = {}) {
+export function useTranslate(index: string, restArgs = {}) {
 
     if (!index) {
         return '';
     }
 
     const {nameSpace: i18nModelNameSpace} = translateConfig;
-    const state = useSelector(state => state);
+    const state = useStoreState();
     const dispatch = useDispatch();
     const {getState} = useStore();
-    const {language, defaultLanguage, data} = state[i18nModelNameSpace];
+    const {language, defaultLanguage, data} = (i18nModelNameSpace && state?.[i18nModelNameSpace] || {});
 
     // Parse index to nameSpace and key
     const [nameSpace, key] = index?.split('/') || [];
@@ -134,18 +134,16 @@ export function useTranslate(index, restArgs = {}) {
 
 /**
  * A hook to access the state, actions and reducers from i18n model.
- * @returns {[]}
  */
 export function useI18n() {
-    return useModel(translateConfig.nameSpace);
+    return translateConfig?.nameSpace && useModel(translateConfig.nameSpace);
 }
 
 /**
  * Create Vivy I18n plugin
  * @param options
- * @returns {Object}
  */
-export default function VivyI18n(options = {}) {
+export default function VivyI18n(options: VivyI18nPluginOption = {}) {
 
     const opts = {...DEFAULT_OPTIONS, ...options};
 
@@ -169,16 +167,16 @@ export default function VivyI18n(options = {}) {
          * Record vivyStore and i18nModelNameSpace when store created
          * @param vivyStore
          */
-        onCreateStore: vivyStore => {
+        onCreateStore: (vivyStore: VivyStore) => {
             translateConfig.store = vivyStore;
         },
 
         /**
          * Register I18ns when register a Vivy model
-         * @param model {Object}
-         * @param store {Object}
+         * @param model
+         * @param store
          */
-        onRegisterModel: (model, store) => {
+        onRegisterModel: (model: VivyModel, store: VivyStore) => {
 
             if (!model || !store) {
                 return;
@@ -199,10 +197,10 @@ export default function VivyI18n(options = {}) {
 
         /**
          * Unregister I18ns when unregister a Vivy model
-         * @param model {Object}
-         * @param store {Object}
+         * @param model
+         * @param store
          */
-        onUnregisterModel: (model, store) => {
+        onUnregisterModel: (model: VivyModel, store: VivyStore) => {
 
             if (!model || !store) {
                 return;
