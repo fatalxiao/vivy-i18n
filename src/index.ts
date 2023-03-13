@@ -11,12 +11,12 @@ import {useDispatch, useStore, useModel, useStoreState} from 'react-vivy';
 
 // Types
 import {VivyI18nPluginOption} from './types';
-import {VivyModel, VivyStore} from 'vivy';
+import {VivyPlugin, VivyStore} from 'vivy';
 
 /**
  * Default vivy-i18n options
  */
-const DEFAULT_OPTIONS: VivyI18nPluginOption = {
+export const DEFAULT_OPTIONS: VivyI18nPluginOption = {
     i18nModelNameSpace: 'i18n',
     defaultLanguage: 'en-US'
 };
@@ -144,7 +144,7 @@ export function useI18n() {
  * Create Vivy I18n plugin
  * @param options
  */
-export default function VivyI18n(options: VivyI18nPluginOption = {}) {
+export default function VivyI18n(options: VivyI18nPluginOption = {}): VivyPlugin {
 
     const opts = {...DEFAULT_OPTIONS, ...options};
 
@@ -168,7 +168,7 @@ export default function VivyI18n(options: VivyI18nPluginOption = {}) {
          * Record vivyStore and i18nModelNameSpace when store created
          * @param vivyStore
          */
-        onCreateStore: (vivyStore: VivyStore) => {
+        onCreateStore: (vivyStore) => {
             translateConfig.store = vivyStore;
         },
 
@@ -177,7 +177,7 @@ export default function VivyI18n(options: VivyI18nPluginOption = {}) {
          * @param model
          * @param store
          */
-        onRegisterModel: (model: VivyModel, store: VivyStore) => {
+        onRegisterModel: (model, store) => {
 
             if (!model || !store) {
                 return;
@@ -201,7 +201,7 @@ export default function VivyI18n(options: VivyI18nPluginOption = {}) {
          * @param model
          * @param store
          */
-        onUnregisterModel: (model: VivyModel, store: VivyStore) => {
+        onUnregisterModel: (model, store) => {
 
             if (!model || !store) {
                 return;

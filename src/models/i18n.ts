@@ -7,10 +7,7 @@
 import {translate} from '../index';
 
 // Types
-import {
-    TranslateParams, SwitchLanguageAction, SwitchDefaultLanguageAction,
-    RegisterAction, UnregisterAction
-} from '../types';
+import {VivyModel} from 'vivy';
 
 /**
  * Create I18n model
@@ -23,9 +20,9 @@ import {
 export default function createI18n(
     nameSpace?: string, language?: string, defaultLanguage?: string,
     onSwitchLanguage?: (language: string) => void, onSwitchDefaultLanguage?: (language: string) => void
-) {
+): VivyModel {
     return {
-        nameSpace: nameSpace,
+        nameSpace: nameSpace as string,
         state: {
 
             /**
@@ -51,7 +48,7 @@ export default function createI18n(
              * @param index
              * @param restArgs
              */
-            translate: ({index, ...restArgs}: TranslateParams) => () => translate(index, restArgs)
+            translate: ({index, ...restArgs}) => () => translate(index, restArgs)
 
         },
         reducers: {
@@ -61,7 +58,7 @@ export default function createI18n(
              * @param state
              * @param language
              */
-            switchLanguage: (state: any, {language}: SwitchLanguageAction) => {
+            switchLanguage: (state, {language}) => {
                 onSwitchLanguage?.(language);
                 return {
                     ...state,
@@ -74,7 +71,7 @@ export default function createI18n(
              * @param state
              * @param language
              */
-            switchDefaultLanguage: (state: any, {defaultLanguage}: SwitchDefaultLanguageAction) => {
+            switchDefaultLanguage: (state, {defaultLanguage}) => {
                 onSwitchDefaultLanguage?.(defaultLanguage);
                 return {
                     ...state,
@@ -88,7 +85,7 @@ export default function createI18n(
              * @param nameSpace
              * @param i18ns
              */
-            register: (state: any, {nameSpace, i18ns}: RegisterAction) => {
+            register: (state, {nameSpace, i18ns}) => {
                 return {
                     ...state,
                     data: {
@@ -103,7 +100,7 @@ export default function createI18n(
              * @param state
              * @param nameSpace
              */
-            unregister: (state: any, {nameSpace}: UnregisterAction) => {
+            unregister: (state, {nameSpace}) => {
 
                 const data = {...state.data};
                 delete data[nameSpace];
