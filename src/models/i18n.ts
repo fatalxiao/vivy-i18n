@@ -20,7 +20,7 @@ import {VivyModel} from 'vivy';
 export default function createI18n(
     nameSpace?: string, language?: string, defaultLanguage?: string,
     onSwitchLanguage?: (language: string) => void, onSwitchDefaultLanguage?: (language: string) => void
-): VivyModel {
+): VivyModel<object> {
     return {
         nameSpace: nameSpace as string,
         state: {

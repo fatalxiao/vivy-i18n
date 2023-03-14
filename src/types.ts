@@ -3,6 +3,8 @@
  * @author Liangxiaojun
  */
 
+import {VivyModel, Dispatch} from 'vivy';
+
 export type I18nProps = {
     index: string
 }
@@ -34,4 +36,16 @@ export interface VivyI18nPluginOption {
      */
     onSwitchDefaultLanguage?: (defaultLanguage?: string) => void,
 
+}
+
+export interface VivyModelI18n {
+    [key: string]: ((getState: () => any, dispatch: Dispatch, ...extraParams: any[]) => any) | any;
+}
+
+export interface VivyModelI18nsMapObject {
+    [language: string]: VivyModelI18n;
+}
+
+export interface VivyI18nModel extends VivyModel<any> {
+    i18ns?: VivyModelI18nsMapObject;
 }
