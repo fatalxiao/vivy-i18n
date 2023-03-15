@@ -35,13 +35,22 @@
     "bugs": {
         "url": "https://github.com/fatalxiao/vivy-i18n/issues"
     },
+    "peerDependencies": {
+        "@types/react": "^16.8 || ^17.0 || ^18.0",
+        "@types/react-dom": "^16.8 || ^17.0 || ^18.0",
+        "react": "^16.8 || ^17.0 || ^18.0",
+        "react-dom": "^16.8 || ^17.0 || ^18.0",
+        "vivy": "^3"
+    },
     "dependencies": {
         "prop-types": ">=15.x",
-        "react": ">=16.x",
-        "react-dom": ">=16.x",
+        "react": ">=16.8.x",
+        "react-dom": ">=16.8.x",
         "react-vivy": ">=2.2.x"
     },
     "devDependencies": {
+        "@types/react": ">=16.8",
+        "@types/react-dom": ">=16.8",
         "@typescript-eslint/eslint-plugin": "^5.55.0",
         "@typescript-eslint/parser": "^5.55.0",
         "eslint": "^8.36.0",
