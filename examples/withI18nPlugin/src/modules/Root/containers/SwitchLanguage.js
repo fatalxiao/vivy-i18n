@@ -3,14 +3,14 @@
  */
 
 import React from 'react';
-import {useI18n} from 'vivy-i18n';
+import {useLanguage} from 'vivy-i18n';
 
 const SwitchLanguage = () => {
 
     /**
      * Get state and reducer from i18n model using hook "useI18n".
      */
-    const [{language}, {switchLanguage}] = useI18n();
+    const [language, switchLanguage] = useLanguage();
 
     console.log('language::', language);
 
