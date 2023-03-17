@@ -1,6 +1,8 @@
 {
     "upgrade": true,
     "reject": [
+        "@types/react",
+        "@types/react-dom",
         "prop-types",
         "react",
         "react-dom",
