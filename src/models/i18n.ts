@@ -3,11 +3,8 @@
  * @author Liangxiaojun
  */
 
-// Utils
-import {translate} from '../index';
-
-// Types
 import {VivyModel} from 'vivy';
+import {translate, VivyI18nModelState} from '../index';
 
 /**
  * Create I18n model
@@ -20,7 +17,7 @@ import {VivyModel} from 'vivy';
 export default function createI18n(
     nameSpace?: string, language?: string, defaultLanguage?: string,
     onSwitchLanguage?: (language: string) => void, onSwitchDefaultLanguage?: (language: string) => void
-): VivyModel<object> {
+): VivyModel<VivyI18nModelState> {
     return {
         nameSpace: nameSpace as string,
         state: {

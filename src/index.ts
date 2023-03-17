@@ -10,8 +10,9 @@ import createI18n from './models/i18n';
 import {useDispatch, useStore, useModel, useStoreState} from 'react-vivy';
 
 // Types
-import {VivyI18nPluginOption} from './types';
+import {VivyI18nModelState, VivyI18nPluginOption} from './types';
 import {VivyPlugin, VivyStore} from 'vivy';
+import {Dispatcher, DispatcherMapObject} from 'react-vivy/src/types';
 
 /**
  * Default vivy-i18n options
@@ -96,9 +97,11 @@ export function useTranslate(index: string, restArgs = {}) {
     }
 
     const {nameSpace: i18nModelNameSpace} = translateConfig;
+    const store = useStore();
     const state = useStoreState();
     const dispatch = useDispatch();
-    const {getState} = useStore();
+    // eslint-disable-next-line @typescript-eslint/unbound-method
+    const {getState} = store;
     const {language, defaultLanguage, data} = (i18nModelNameSpace && state?.[i18nModelNameSpace] || {});
 
     // Parse index to nameSpace and key
@@ -136,8 +139,24 @@ export function useTranslate(index: string, restArgs = {}) {
 /**
  * A hook to access the state, actions and reducers from i18n model.
  */
-export function useI18n() {
-    return translateConfig?.nameSpace && useModel(translateConfig.nameSpace);
+export function useI18n(): [VivyI18nModelState, DispatcherMapObject] {
+    return useModel(translateConfig?.nameSpace as string);
+}
+
+/**
+ * A hook to access the language and switchLanguage from i18n model.
+ */
+export function useLanguage(): [string | undefined, Dispatcher] {
+    const [{language}, {switchLanguage}] = useI18n();
+    return [language, switchLanguage];
+}
+
+/**
+ * A hook to access the defaultLanguage and switchDefaultLanguage from i18n model.
+ */
+export function useDefaultLanguage(): [string | undefined, Dispatcher] {
+    const [{defaultLanguage}, {switchDefaultLanguage}] = useI18n();
+    return [defaultLanguage, switchDefaultLanguage];
 }
 
 /**
@@ -188,7 +207,7 @@ export default function VivyI18n(options: VivyI18nPluginOption = {}): VivyPlugin
             // Register I18ns
             if (i18ns && Object.keys(i18ns).length > 0) {
                 store?.dispatch({
-                    type: `${i18nModelNameSpace}/register`,
+                    type: `${i18nModelNameSpace as string}/register`,
                     nameSpace,
                     i18ns
                 });
@@ -211,7 +230,7 @@ export default function VivyI18n(options: VivyI18nPluginOption = {}): VivyPlugin
 
             // Unregister I18ns
             store?.dispatch({
-                type: `${i18nModelNameSpace}/unregister`,
+                type: `${i18nModelNameSpace as string}/unregister`,
                 nameSpace
             });
 

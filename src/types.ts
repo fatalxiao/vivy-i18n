@@ -38,6 +38,15 @@ export interface VivyI18nPluginOption {
 
 }
 
+export interface VivyI18nModelState {
+
+    language?: string;
+    defaultLanguage?: string;
+
+    [extraKey: string]: any;
+
+}
+
 export interface VivyModelI18n {
     [key: string]: ((getState: () => any, dispatch: Dispatch, ...extraParams: any[]) => any) | any;
 }
