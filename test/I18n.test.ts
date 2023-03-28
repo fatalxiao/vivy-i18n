@@ -9,12 +9,12 @@ test('Use I18n', () => {
     vivy.use(VivyI18n());
 
     // eslint-disable-next-line no-unused-vars
-    const store = vivy.createStore();
+    vivy.createStore();
 
     expect(
         typeof I18n
     ).toEqual(
-        'object'
+        'function'
     );
 
 });

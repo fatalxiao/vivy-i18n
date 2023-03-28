@@ -1,8 +1,11 @@
 /**
- * @file testModel.js
+ * @file testModel.ts
  */
 
-export default {
+// Types
+import {VivyI18nModel} from 'src/types';
+
+export default <VivyI18nModel<string>>{
     nameSpace: 'testModel',
     state: 'testModelState',
     i18ns: {

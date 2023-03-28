@@ -12,7 +12,7 @@ test('Use translate', () => {
     vivy.use(VivyI18n());
 
     // eslint-disable-next-line no-unused-vars
-    const store = vivy.createStore();
+    vivy.createStore();
 
     expect(
         typeof translate
@@ -34,7 +34,7 @@ test('Use translate default en title', () => {
     expect(
         translate('testModel/title')
     ).toEqual(
-        testModel.i18ns['en-US'].title
+        testModel?.i18ns?.['en-US']?.title
     );
 
 });
@@ -51,7 +51,7 @@ test('Use translate default en text', () => {
     expect(
         translate('testModel/text')
     ).toEqual(
-        testModel.i18ns['en-US'].text
+        testModel?.i18ns?.['en-US']?.text
     );
 
 });
@@ -68,7 +68,7 @@ test('Use translate default en func', () => {
     expect(
         translate('testModel/func')
     ).toEqual(
-        testModel.i18ns['en-US'].func(store.getState)
+        testModel?.i18ns?.['en-US']?.func(store.getState)
     );
 
 });
@@ -87,7 +87,7 @@ test('Use translate default zh title', () => {
     expect(
         translate('testModel/title')
     ).toEqual(
-        testModel.i18ns['zh-CN'].title
+        testModel?.i18ns?.['zh-CN']?.title
     );
 
 });
@@ -106,7 +106,7 @@ test('Use translate default zh text', () => {
     expect(
         translate('testModel/text')
     ).toEqual(
-        testModel.i18ns['zh-CN'].text
+        testModel?.i18ns?.['zh-CN']?.text
     );
 
 });
@@ -125,7 +125,7 @@ test('Use translate default zh func', () => {
     expect(
         translate('testModel/func')
     ).toEqual(
-        testModel.i18ns['zh-CN'].func(store.getState)
+        testModel?.i18ns?.['zh-CN']?.func(store.getState)
     );
 
 });
@@ -146,7 +146,7 @@ test('With extra args en-US', () => {
     expect(
         translate('testModel/withArgs', args)
     ).toEqual(
-        testModel.i18ns['en-US'].withArgs(store.getState, store.dispatch, args)
+        testModel?.i18ns?.['en-US']?.withArgs(store.getState, store.dispatch, args)
     );
 
 });
@@ -169,7 +169,7 @@ test('With extra args zh-CN', () => {
     expect(
         translate('testModel/withArgs', args)
     ).toEqual(
-        testModel.i18ns['zh-CN'].withArgs(store.getState, store.dispatch, args)
+        testModel?.i18ns?.['zh-CN']?.withArgs(store.getState, store.dispatch, args)
     );
 
 });
