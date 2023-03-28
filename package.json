@@ -43,7 +43,6 @@
         "vivy": "^3"
     },
     "dependencies": {
-        "prop-types": ">=15.x",
         "react": ">=16.8.x",
         "react-dom": ">=16.8.x",
         "react-vivy": ">=2.2.x"

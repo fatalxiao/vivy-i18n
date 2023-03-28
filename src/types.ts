@@ -55,6 +55,6 @@ export interface VivyModelI18nsMapObject {
     [language: string]: VivyModelI18n;
 }
 
-export interface VivyI18nModel extends VivyModel<any> {
+export interface VivyI18nModel<S> extends VivyModel<S> {
     i18ns?: VivyModelI18nsMapObject;
 }
