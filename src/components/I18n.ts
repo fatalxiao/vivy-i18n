@@ -3,7 +3,8 @@
  * @author Liangxiaojun
  */
 
-import {useStoreState} from 'react-vivy';
+// Hooks
+import {useModelState} from 'react-vivy';
 
 // Vendors
 import {translate} from '../index';
@@ -12,6 +13,10 @@ import {translate} from '../index';
 import {I18nProps} from '../types';
 
 export const I18n = ({index, ...restProps}: I18nProps) => {
-    useStoreState();
+
+    const [nameSpace] = index?.split('/') || [];
+    useModelState(nameSpace);
+
     return translate(index, restProps);
+
 };

@@ -3,8 +3,12 @@
  * @author Liangxiaojun
  */
 
+// Vendors
+import {translate} from '../index';
+
+// Types
 import {VivyModel} from 'vivy';
-import {translate, VivyI18nModelState} from '../index';
+import {VivyI18nModelState} from '../index';
 
 /**
  * Create I18n model
