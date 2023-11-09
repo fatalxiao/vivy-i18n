@@ -12,14 +12,14 @@ export default <VivyI18nModel<string>>{
         'en-US': {
             title: 'Title',
             text: 'Text',
-            func: getState => `testModel state value: ${getState().testModel}`,
-            withArgs: (getState, dispatch, {name}) => `${name} is required`
+            func: (getState: () => any) => `testModel state value: ${getState().testModel}`,
+            withArgs: (_getState: any, _dispatch: any, {name}: any) => `${name} is required`
         },
         'zh-CN': {
             title: '标题',
             text: '正文',
-            func: getState => `testModel state 的值: ${getState().testModel}`,
-            withArgs: (getState, dispatch, {name}) => `请填写${name}`
+            func: (getState: () => any) => `testModel state 的值: ${getState().testModel}`,
+            withArgs: (_getState: any, _dispatch: any, {name}: any) => `请填写${name}`
         }
     }
 };
