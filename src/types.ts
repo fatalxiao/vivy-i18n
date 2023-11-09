@@ -3,6 +3,7 @@
  * @author Liangxiaojun
  */
 
+// Types
 import {VivyModel, Dispatch} from 'vivy';
 
 export type I18nProps = {
