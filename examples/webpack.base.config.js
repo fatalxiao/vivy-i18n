@@ -2,7 +2,7 @@
  * @file webpack.base.config.js
  */
 
-module.exports = {
+module.exports = (...babelPlugins) => ({
     mode: 'development',
     devtool: 'inline-source-map',
     resolve: {
@@ -21,8 +21,9 @@ module.exports = {
             loader: 'babel-loader',
             exclude: /node_modules/,
             options: {
-                cacheDirectory: true
+                cacheDirectory: true,
+                plugins: babelPlugins
             }
         }]
     }
-};
+});

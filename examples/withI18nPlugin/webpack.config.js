@@ -6,11 +6,12 @@
 const path = require('path');
 const {merge} = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 // Base config
 const baseConfig = require('../webpack.base.config.js');
 
-module.exports = merge(baseConfig, {
+module.exports = merge(baseConfig(require.resolve('react-refresh/babel')), {
 
     entry: path.join(__dirname, './src/index.js'),
 
@@ -45,7 +46,8 @@ module.exports = merge(baseConfig, {
     plugins: [
         new HtmlWebpackPlugin({
             template: path.join(__dirname, './src/index.html')
-        })
+        }),
+        new ReactRefreshWebpackPlugin()
     ]
 
 });
